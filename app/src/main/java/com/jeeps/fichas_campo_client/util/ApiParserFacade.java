@@ -2,8 +2,14 @@ package com.jeeps.fichas_campo_client.util;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.jeeps.fichas_campo_client.model.Afloramiento;
+import com.jeeps.fichas_campo_client.model.EstructuraLineal;
+import com.jeeps.fichas_campo_client.model.EstructuraPlanar;
 import com.jeeps.fichas_campo_client.model.FichaCampo;
 import com.jeeps.fichas_campo_client.model.FichaSubClassesHelper;
+import com.jeeps.fichas_campo_client.model.Muestra;
+import com.jeeps.fichas_campo_client.model.Pliegue;
+import com.jeeps.fichas_campo_client.model.Ubicacion;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,17 +51,41 @@ public class ApiParserFacade {
                         case "ubicacion":
                             fichaSubClassesHelper.setUbicacionUrl(s.getValue().getAsJsonObject().get("href").getAsString());
                             break;
-                        case "estructura-linear":
+                        case "estructura-lineal":
                             fichaSubClassesHelper.setEstructuraLinealUrl(s.getValue().getAsJsonObject().get("href").getAsString());
                             break;
                         case "afloramiento":
                             fichaSubClassesHelper.setAfloramientoUrl(s.getValue().getAsJsonObject().get("href").getAsString());
                             break;
                         case "pliegue":
-                            fichaSubClassesHelper.setAfloramientoUrl(s.getValue().getAsJsonObject().get("href").getAsString());
+                            fichaSubClassesHelper.setPliegueUrl(s.getValue().getAsJsonObject().get("href").getAsString());
                             break;
                     }
                 });
         return fichaSubClassesHelper;
+    }
+
+    public Ubicacion parseUbicacion(String json) {
+        return gson.fromJson(json, Ubicacion.class);
+    }
+
+    public Afloramiento parseAfloramiento(String json) {
+        return gson.fromJson(json, Afloramiento.class);
+    }
+
+    public EstructuraLineal parseEstructuraLineal(String json) {
+        return gson.fromJson(json, EstructuraLineal.class);
+    }
+
+    public EstructuraPlanar parseEstructuraPlanar(String json) {
+        return gson.fromJson(json, EstructuraPlanar.class);
+    }
+
+    public Muestra parseMuestra(String json) {
+        return gson.fromJson(json, Muestra.class);
+    }
+
+    public Pliegue parsePliegue(String json) {
+        return gson.fromJson(json, Pliegue.class);
     }
 }

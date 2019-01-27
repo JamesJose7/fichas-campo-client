@@ -3,7 +3,9 @@ package com.jeeps.fichas_campo_client.model;
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 
-public class FichaCampo {
+import java.io.Serializable;
+
+public class FichaCampo implements Serializable {
     private String datum;
     private String escala;
     private String proyecto;

@@ -26,6 +26,7 @@ public class FichaCampoRecyclerViewAdapter
         extends RecyclerView.Adapter<FichaCampoRecyclerViewAdapter.FichaCampoViewHolder> {
 
     public static final String SERIALIZED_FICHA = "SERIALIZED_FICHA";
+    public static final String SERIALIZED_FICHA_SUB = "SERIALIZED_FICHA_SUB";
     private Context mContext;
     private List<FichaCampo> mFichaCampos;
 
@@ -85,7 +86,11 @@ public class FichaCampoRecyclerViewAdapter
                         apiParserFacade.getFichaSubclasses(fichaCampos.get(position));
                 // Pass the object to the details ficha activity
                 Bundle bundle = new Bundle();
-                bundle.putSerializable(SERIALIZED_FICHA, fichaSubClassesHelper);
+                FichaCampo sentFicha = fichaCampos.get(position);
+                // null JsonObject since it cannot be serialized
+                sentFicha.setSelfLinks(null);
+                bundle.putSerializable(SERIALIZED_FICHA, sentFicha);
+                bundle.putSerializable(SERIALIZED_FICHA_SUB, fichaSubClassesHelper);
                 Intent intent = new Intent(mContext, FichaDetailsActivity.class);
                 intent.putExtras(bundle);
                 mContext.startActivity(intent);
