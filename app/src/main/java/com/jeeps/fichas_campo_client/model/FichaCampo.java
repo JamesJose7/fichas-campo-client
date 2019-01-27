@@ -1,5 +1,8 @@
 package com.jeeps.fichas_campo_client.model;
 
+import com.google.gson.JsonObject;
+import com.google.gson.annotations.SerializedName;
+
 public class FichaCampo {
     private String datum;
     private String escala;
@@ -24,6 +27,8 @@ public class FichaCampo {
     private Muestra muestra;
     private Afloramiento afloramiento;
 
+    @SerializedName("_links")
+    private JsonObject selfLinks;
 
     public FichaCampo() { super(); }
 
@@ -177,5 +182,13 @@ public class FichaCampo {
 
     public void setEstructuraRoca(String estructuraRoca) {
         this.estructuraRoca = estructuraRoca;
+    }
+
+    public JsonObject getSelfLinks() {
+        return selfLinks;
+    }
+
+    public void setSelfLinks(JsonObject selfLinks) {
+        this.selfLinks = selfLinks;
     }
 }

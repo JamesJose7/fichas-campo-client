@@ -1,13 +1,19 @@
 package com.jeeps.fichas_campo_client.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.jeeps.fichas_campo_client.FichaDetailsActivity;
 import com.jeeps.fichas_campo_client.R;
 import com.jeeps.fichas_campo_client.model.FichaCampo;
+import com.jeeps.fichas_campo_client.model.FichaSubClassesHelper;
+import com.jeeps.fichas_campo_client.util.ApiParserFacade;
 
 import java.util.List;
 
@@ -19,6 +25,7 @@ import butterknife.ButterKnife;
 public class FichaCampoRecyclerViewAdapter
         extends RecyclerView.Adapter<FichaCampoRecyclerViewAdapter.FichaCampoViewHolder> {
 
+    public static final String SERIALIZED_FICHA = "SERIALIZED_FICHA";
     private Context mContext;
     private List<FichaCampo> mFichaCampos;
 
@@ -53,6 +60,7 @@ public class FichaCampoRecyclerViewAdapter
     }
 
     class FichaCampoViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.ficha_item_layout) LinearLayout mLinearLayout;
         @BindView(R.id.datum_text) TextView mDatumText;
         @BindView(R.id.escala_text) TextView mEscalaText;
         @BindView(R.id.proyecto_text) TextView mProyectoText;
@@ -69,6 +77,19 @@ public class FichaCampoRecyclerViewAdapter
             mEscalaText.setText(fichaCampo.getEscala());
             mProyectoText.setText(fichaCampo.getProyecto());
             mDescritaPorText.setText(fichaCampo.getDescritaPor());
+
+            // Set on click listener for layout
+            mLinearLayout.setOnClickListener(v -> {
+                ApiParserFacade apiParserFacade = new ApiParserFacade();
+                FichaSubClassesHelper fichaSubClassesHelper =
+                        apiParserFacade.getFichaSubclasses(fichaCampos.get(position));
+                // Pass the object to the details ficha activity
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(SERIALIZED_FICHA, fichaSubClassesHelper);
+                Intent intent = new Intent(mContext, FichaDetailsActivity.class);
+                intent.putExtras(bundle);
+                mContext.startActivity(intent);
+            });
         }
     }
 }

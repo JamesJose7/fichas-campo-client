@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ApiFichaCampoAdapter implements FichaCampoDaoPort,
         HttpService.HttpServiceListener {
-    private static final String FICHAS_CAMPO_URL = "https://fichas-geologicas-api.herokuapp.com/api/v1/fichasCampo";
+    private static final String FICHAS_CAMPO_URL = "https://fichas-geologicas-api.herokuapp.com/api/v1/fichasCampo?size=50";
 
     private ApiFichaCampoListener listener;
     private HttpService httpService;
