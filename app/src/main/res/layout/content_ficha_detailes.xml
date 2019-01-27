@@ -1,11 +1,877 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".FichaDetailsActivity"
-    tools:showIn="@layout/activity_ficha_detailes">
+    tools:showIn="@layout/activity_ficha_detailes"
+    android:padding="8dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <!--Detalles ficha-->
+    <LinearLayout
+        android:id="@+id/ficha_detalles_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="10dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Detalles ficha:"
+            android:textSize="20sp"
+            android:layout_marginBottom="5dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="100"
+            android:layout_marginBottom="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="50">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:text="Datum:"/>
+
+                <TextView
+                    android:id="@+id/datum_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="17sp"
+                    tools:text="Datum"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="50">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:text="Escala:"/>
+
+                <TextView
+                    android:id="@+id/escala_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="17sp"
+                    tools:text="escala"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Proyecto:"/>
+        <TextView
+            android:id="@+id/proyecto_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="Proyecto"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Descrita por:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/descrita_por_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="Descrita por"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Datos ubicación:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/datos_ubicacion_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Nomenclatura unidad geológica:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/nom_unidad_geo_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Tipo de Contacto:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/tipo_contacto_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Limite de Contacto:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/limite_contacto_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Certexa de Contacto:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/certeza_contacto_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Origen de Roca:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/origen_roca_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Estructura de Roca:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/estructura_roca_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+    </LinearLayout>
+
+    <!--Detalles ubicacion-->
+    <LinearLayout
+        android:id="@+id/ubicacion_layout"
+        android:layout_below="@id/ficha_detalles_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ubicacion:"
+            android:textSize="20sp"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Fecha:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/fecha_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Provincia:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/provincia_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Canton:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/canton_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Sector:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/sector_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Escala:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/escala_ubicacion_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Foto:"
+            android:layout_marginTop="6dp"/>
+        <ImageView
+            android:id="@+id/foto_ubicacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <!--Detalles muestra-->
+    <LinearLayout
+        android:id="@+id/muestra_layout"
+        android:layout_below="@id/ubicacion_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Muestra:"
+            android:textSize="20sp"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Naturaleza:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/naturaleza_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Tipo:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/tipo_muestra_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Consistencia Material:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/consistencia_material_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Codigo:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/codigo_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Sitio:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/sitio_muestra_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Tipo de Analisis:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/tipo_analisis_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Metodo de Analisis:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/metodo_analisis_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Nomenclatura de Metodo de Analisis:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/nom_metodo_analisis_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Cantidad de Muestra:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/cantidad_muestra_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Observaciones:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/observaciones_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+    </LinearLayout>
+
+    <!--Detalles afloramiento-->
+    <LinearLayout
+        android:id="@+id/afloramiento_layout"
+        android:layout_below="@id/muestra_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Afloramiento:"
+            android:textSize="20sp"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Dimension:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/dimension_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Origen:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/origen_afloramiento_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Tipo de Roca:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/tipo_roca_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Sitio:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/sitio_afloramiento_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+    </LinearLayout>
+
+    <!--Detalles estructura planar-->
+    <LinearLayout
+        android:id="@+id/estructura_planar_layout"
+        android:layout_below="@id/afloramiento_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Estructura Planar:"
+            android:textSize="20sp"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Buzamiento Intensidad:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/buz_intensidad_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Azimut:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/azimut_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Clivaje:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/clivaje_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Estratificacion:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/estratificacion_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Fotogeologia:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/fotogeologia_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Zona de Cizalla:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/zona_cizalla_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Rocas Metaforicas:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/rocas_metaforicas_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Rocas Igneas:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/rocas_igneas_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+    </LinearLayout>
+
+    <!--Detalles estructura lineal-->
+    <LinearLayout
+        android:id="@+id/estructura_lineal_layout"
+        android:layout_below="@id/estructura_planar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Estructura Planar:"
+            android:textSize="20sp"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Rumbo:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/rumbo_estr_lineal_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Clase:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/clase_estr_lineal_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Lineacion:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/lineacion_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Direccion:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/direccion_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Buzamiento:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/buzamiento_estr_lineal_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Asociacion:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/asociacion_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Formacion:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/formacion_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Clase Diaclasa:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/diaclasa_clase_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+    </LinearLayout>
+
+    <!--Detalles pliegue-->
+    <LinearLayout
+        android:id="@+id/pliegue_layout"
+        android:layout_below="@id/estructura_lineal_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pliegue:"
+            android:textSize="20sp"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Rumbo:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/rumbo_pliegue_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Buzamiento:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/buzamiento_pliegue_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Tipo:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/tipo_pliegue_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Altura:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/altura_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Separacion:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/separacion_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Posicion:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/posicion_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Angulo entre Flancos:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/angulo_flancos_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Perfil:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/perfil_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="Sistema:"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/sistema_text"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            tools:text="..."/>
+
+    </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>
