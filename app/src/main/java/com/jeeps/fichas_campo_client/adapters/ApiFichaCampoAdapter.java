@@ -1,33 +1,30 @@
-package com.jeeps.fichas_campo_client.controller;
+package com.jeeps.fichas_campo_client.adapters;
 
-import com.google.gson.Gson;
 import com.jeeps.fichas_campo_client.model.FichaCampo;
 import com.jeeps.fichas_campo_client.ports.FichaCampoDaoPort;
 import com.jeeps.fichas_campo_client.service.HttpService;
+import com.jeeps.fichas_campo_client.util.ApiParserFacade;
 
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.util.Arrays;
 import java.util.List;
 
-public class ApiFichaCampoFacade implements FichaCampoDaoPort,
+public class ApiFichaCampoAdapter implements FichaCampoDaoPort,
         HttpService.HttpServiceListener {
     private static final String FICHAS_CAMPO_URL = "https://fichas-geologicas-api.herokuapp.com/api/v1/fichasCampo";
 
     private ApiFichaCampoListener listener;
     private HttpService httpService;
-    private Gson gson;
+    private ApiParserFacade apiParserFacade;
 
     public interface ApiFichaCampoListener {
         void fichasCampoReady(List<FichaCampo> fichasCampo);
     }
 
-    public ApiFichaCampoFacade(ApiFichaCampoListener listener) {
+    public ApiFichaCampoAdapter(ApiFichaCampoListener listener) {
         this.listener = listener;
         httpService = new HttpService(this);
-        gson = new Gson();
+        apiParserFacade = new ApiParserFacade();
     }
 
     @Override
@@ -42,13 +39,8 @@ public class ApiFichaCampoFacade implements FichaCampoDaoPort,
     @Override
     public void onSuccess(String json) {
         // Transform fichas de campo into object list
-        List<FichaCampo> fichaCampoList;
         try {
-            JSONObject jsonObject = new JSONObject(json);
-            JSONObject embedded = jsonObject.getJSONObject("_embedded");
-            JSONArray jsonFichasCampo = embedded.getJSONArray("fichasCampo");
-            FichaCampo[] fichaCampos = gson.fromJson(jsonFichasCampo.toString(), FichaCampo[].class);
-            fichaCampoList = Arrays.asList(fichaCampos);
+            List<FichaCampo> fichaCampoList = apiParserFacade.parseFichasCampoList(json);
             listener.fichasCampoReady(fichaCampoList);
         } catch (JSONException e) {
             e.printStackTrace();

@@ -1,24 +1,27 @@
 package com.jeeps.fichas_campo_client;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.jeeps.fichas_campo_client.controller.ApiFichaCampoFacade;
+import com.jeeps.fichas_campo_client.adapters.ApiFichaCampoAdapter;
 import com.jeeps.fichas_campo_client.model.FichaCampo;
 
 import java.util.List;
 
+import androidx.appcompat.app.AppCompatActivity;
+import butterknife.ButterKnife;
+
 public class FichasCampoActivity extends AppCompatActivity
-    implements ApiFichaCampoFacade.ApiFichaCampoListener {
+    implements ApiFichaCampoAdapter.ApiFichaCampoListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fichas_campo);
+        ButterKnife.bind(this);
 
-        ApiFichaCampoFacade apiFichaCampoFacade = new ApiFichaCampoFacade(this);
+        ApiFichaCampoAdapter apiFichaCampoAdapter = new ApiFichaCampoAdapter(this);
         try {
-            apiFichaCampoFacade.requestFichasCampo();
+            apiFichaCampoAdapter.requestFichasCampo();
         } catch (Exception e) {
             e.printStackTrace();
         }
