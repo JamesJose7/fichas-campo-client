@@ -7,25 +7,35 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".FichaDetailsActivity"
-    tools:showIn="@layout/activity_ficha_detailes"
-    android:padding="8dp">
+    tools:showIn="@layout/activity_ficha_detailes">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#555f5f5f">
+
     <!--Detalles ficha-->
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:id="@+id/ficha_detalles_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginBottom="10dp">
+        app:cardElevation="4dp"
+        app:contentPadding="12dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Detalles ficha:"
+            android:layout_marginBottom="5dp"
+            android:text="Detalles Ficha"
+            android:gravity="center"
             android:textSize="20sp"
-            android:layout_marginBottom="5dp"/>
+            android:background="@drawable/bottom_border"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -193,20 +203,31 @@
             tools:text="..."/>
 
     </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/ubicacion_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="4dp"
+        app:contentPadding="12dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_below="@id/ficha_detalles_layout">
     <!--Detalles ubicacion-->
     <LinearLayout
-        android:id="@+id/ubicacion_layout"
-        android:layout_below="@id/ficha_detalles_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ubicacion:"
+            android:text="Ubicación"
+            android:gravity="center"
             android:textSize="20sp"
-            android:layout_marginBottom="5dp"/>
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/bottom_border"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -285,20 +306,31 @@
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/muestra_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="4dp"
+        app:contentPadding="12dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_below="@id/ubicacion_layout">
     <!--Detalles muestra-->
     <LinearLayout
-        android:id="@+id/muestra_layout"
-        android:layout_below="@id/ubicacion_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Muestra:"
+            android:text="Muestra"
+            android:gravity="center"
             android:textSize="20sp"
-            android:layout_marginBottom="5dp"/>
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/bottom_border"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -431,20 +463,31 @@
             tools:text="..."/>
 
     </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/afloramiento_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="4dp"
+        app:contentPadding="12dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_below="@id/muestra_layout">
     <!--Detalles afloramiento-->
     <LinearLayout
-        android:id="@+id/afloramiento_layout"
-        android:layout_below="@id/muestra_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Afloramiento:"
+            android:text="Afloramiento"
+            android:gravity="center"
             android:textSize="20sp"
-            android:layout_marginBottom="5dp"/>
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/bottom_border"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -499,20 +542,31 @@
             tools:text="..."/>
 
     </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/estructura_planar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="4dp"
+        app:contentPadding="12dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_below="@id/afloramiento_layout">
     <!--Detalles estructura planar-->
     <LinearLayout
-        android:id="@+id/estructura_planar_layout"
-        android:layout_below="@id/afloramiento_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Estructura Planar:"
+            android:text="Estructura Planar"
+            android:gravity="center"
             android:textSize="20sp"
-            android:layout_marginBottom="5dp"/>
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/bottom_border"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -619,20 +673,31 @@
             tools:text="..."/>
 
     </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/estructura_lineal_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="4dp"
+        app:contentPadding="12dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_below="@id/estructura_planar_layout">
     <!--Detalles estructura lineal-->
     <LinearLayout
-        android:id="@+id/estructura_lineal_layout"
-        android:layout_below="@id/estructura_planar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Estructura Planar:"
+            android:text="Estructura Planar"
+            android:gravity="center"
             android:textSize="20sp"
-            android:layout_marginBottom="5dp"/>
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/bottom_border"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -739,20 +804,29 @@
             tools:text="..."/>
 
     </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/pliegue_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="4dp"
+        app:contentPadding="12dp"
+        android:layout_margin="10dp"
+        android:layout_below="@id/estructura_lineal_layout">
     <!--Detalles pliegue-->
     <LinearLayout
-        android:id="@+id/pliegue_layout"
-        android:layout_below="@id/estructura_lineal_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Pliegue:"
+            android:text="Pliegue"
+            android:gravity="center"
             android:textSize="20sp"
-            android:layout_marginBottom="5dp"/>
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/bottom_border"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -872,6 +946,7 @@
             tools:text="..."/>
 
     </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
     </RelativeLayout>
 </ScrollView>
