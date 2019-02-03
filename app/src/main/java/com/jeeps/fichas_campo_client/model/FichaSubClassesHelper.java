@@ -67,3 +67,47 @@ public class FichaSubClassesHelper implements Serializable {
         this.pliegueUrl = pliegueUrl;
     }
 }
+
+class FichaSubClassesHelperBuilder{
+
+
+    private FichaSubClassesHelper fichaSubClassesHelper;
+
+    public FichaSubClassesHelperBuilder() {
+    }
+
+    public void build(){
+        this.fichaSubClassesHelper = new FichaSubClassesHelper();
+    }
+
+    public void createSelfUrl(String selfUrl){
+        this.fichaSubClassesHelper.setSelfUrl(selfUrl);
+    }
+
+    public void createMuestraUrl(String muestraUrl){
+        this.fichaSubClassesHelper.setMuestraUrl(muestraUrl);
+    }
+
+    public void createEstructuraPlanarUrl(String estructuraPlanarUrl){
+        this.fichaSubClassesHelper.setEstructuraPlanarUrl(estructuraPlanarUrl);
+    }
+
+    public void createUbicacionUrl(String ubicacionUrl){
+        this.fichaSubClassesHelper.setUbicacionUrl(ubicacionUrl);
+    }
+
+    public void createEstructuraLinealUrl(String estructuraLinealUrl){
+        this.fichaSubClassesHelper.setEstructuraLinealUrl(estructuraLinealUrl);
+    }
+
+    public void createAfloramientoUrl(String afloramientoUrl){
+        this.fichaSubClassesHelper.setAfloramientoUrl(afloramientoUrl);
+    }
+
+    public void createPliegueUrl(String pliegueUrl){
+        this.fichaSubClassesHelper.setPliegueUrl(pliegueUrl);
+    }
+
+    public FichaSubClassesHelper getFichaSubClassesHelper(){ return this.fichaSubClassesHelper; }
+
+}

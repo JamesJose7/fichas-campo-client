@@ -194,3 +194,67 @@ public class FichaCampo implements Serializable {
         this.selfLinks = selfLinks;
     }
 }
+
+class FichaCampoBuilder{
+
+
+    private FichaCampo fichaCampo;
+
+    public FichaCampoBuilder(Muestra muestra, Afloramiento afloramiento, String origenRoca, String estructuraRoca, String nomenclaturaUnidadGeologica) {
+        this.fichaCampo.setMuestra(muestra);
+        this.fichaCampo.setAfloramiento(afloramiento);
+        this.fichaCampo.setOrigenRoca(origenRoca);
+        this.fichaCampo.setEstructuraRoca(estructuraRoca);
+        this.fichaCampo.setNomenclaturaUnidadGeologica(nomenclaturaUnidadGeologica);
+    }
+
+    public void build(){
+        this.fichaCampo = new FichaCampo();
+    }
+
+    public void createDatum(String datum){
+        this.fichaCampo.setDatum(datum);
+    }
+
+    public void createEscala(String escala){
+        this.fichaCampo.setEscala(escala);
+    }
+
+    public void createProyecto(String proyecto){
+        this.fichaCampo.setProyecto(proyecto);
+    }
+
+    public void createDatosUbicacion(String datosUbicacion){
+        this.fichaCampo.setDatosUbicacion(datosUbicacion);
+    }
+
+    public void createDescritaPor(String descritaPor){
+        this.fichaCampo.setDescritaPor(descritaPor);
+    }
+
+    public void createTipoContactoGeo(String tipoContactoGeo){
+        this.fichaCampo.setTipoContactoGeo(tipoContactoGeo);
+    }
+
+    public void createLimiteContactoGeo(String limiteContactoGeo) {
+        this.fichaCampo.setLimiteContactoGeo(limiteContactoGeo);
+    }
+
+    public void createCertezaContactoGeo(String certezaContactoGeo) {
+        this.fichaCampo.setCertezaContactoGeo(certezaContactoGeo);
+    }
+
+    public void createEstructuraPlanar(EstructuraPlanar estructuraPlanar) {
+        this.fichaCampo.setEstructuraPlanar(estructuraPlanar);
+    }
+
+    public void createEstructuraLineal(EstructuraLineal estructuraLineal) {
+        this.fichaCampo.setEstructuraLineal(estructuraLineal);
+    }
+
+    public void createPliegue(Pliegue pliegue) {
+        this.fichaCampo.setPliegue(pliegue);
+    }
+
+    public FichaCampo getFichaCampo(){ return this.fichaCampo;}
+}

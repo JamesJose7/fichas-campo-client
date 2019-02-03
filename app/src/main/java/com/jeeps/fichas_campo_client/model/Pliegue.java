@@ -99,3 +99,49 @@ public class Pliegue {
         this.sistema = sistema;
     }
 }
+
+class PliegueBuilder{
+
+    private Pliegue pliegue;
+
+    public PliegueBuilder() {
+    }
+
+    public void build(){
+        this.pliegue = new Pliegue();
+    }
+
+    public void createRumbo(float rumbo){
+        this.pliegue.setRumbo(rumbo);
+    }
+
+    public void createBuzamiento(float buzamiento){
+        this.pliegue.setBuzamiento(buzamiento);
+    }
+
+    public void createTipo(String tipo){
+        this.pliegue.setTipo(tipo);
+    }
+
+    public void createAltura(float altura){
+        this.pliegue.setAltura(altura);
+    }
+
+    public void createSeparacion(float separacion){
+        this.pliegue.setSeparacion(separacion);
+    }
+
+    public void createAnguloEntreFlancos(String anguloEntreFlancos){
+        this.pliegue.setAnguloEntreFlancos(anguloEntreFlancos);
+    }
+
+    public void createPerfil(String perfil){
+        this.pliegue.setPerfil(perfil);
+    }
+
+    public void createSistema(String sistema){
+        this.pliegue.setSistema(sistema);
+    }
+
+    public Pliegue getPliegue(){return this.pliegue;}
+}

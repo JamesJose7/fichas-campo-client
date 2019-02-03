@@ -48,3 +48,33 @@ public class Afloramiento {
         this.sitio = sitio;
     }
 }
+
+
+class AfloramientoBuilder{
+
+    private Afloramiento afloramiento;
+
+    public AfloramientoBuilder() {
+    }
+
+    public void build(){
+        this.afloramiento = new Afloramiento();
+    }
+
+    public void createDimension(String dimension){
+        this.afloramiento.setDimension(dimension);
+    }
+
+    public void createOrigen(String origen){
+        this.afloramiento.setOrigen(origen);
+    }
+
+    public void createTipoRoca(String tipoRoca){
+        this.afloramiento.setTipoRoca(tipoRoca);
+    }
+
+    public void createSitio(String sitio){
+        this.afloramiento.setSitio(sitio);
+    }
+
+}
