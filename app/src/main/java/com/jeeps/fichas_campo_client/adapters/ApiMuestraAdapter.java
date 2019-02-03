@@ -36,4 +36,9 @@ public class ApiMuestraAdapter implements MuestraDaoPort,
         Muestra muestra = apiParserFacade.parseMuestra(json);
         listener.muestraReady(muestra);
     }
+
+    @Override
+    public void onFailure() {
+
+    }
 }

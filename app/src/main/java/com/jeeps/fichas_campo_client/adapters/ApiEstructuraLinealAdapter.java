@@ -36,4 +36,9 @@ public class ApiEstructuraLinealAdapter implements EstructuraLinealDaoPort,
         EstructuraLineal estructuraLineal = apiParserFacade.parseEstructuraLineal(json);
         listener.estructuraLinealReady(estructuraLineal);
     }
+
+    @Override
+    public void onFailure() {
+
+    }
 }

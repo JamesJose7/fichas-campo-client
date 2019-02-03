@@ -41,4 +41,9 @@ public class ApiUbicacionAdapter implements UbicacionDaoPort,
         Ubicacion ubicacion = apiParserFacade.parseUbicacion(json);
         listener.ubicacionReady(ubicacion);
     }
+
+    @Override
+    public void onFailure() {
+
+    }
 }

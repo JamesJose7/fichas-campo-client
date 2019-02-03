@@ -7,7 +7,9 @@ import android.view.MenuItem;
 
 import com.jeeps.fichas_campo_client.adapters.ApiFichaCampoAdapter;
 import com.jeeps.fichas_campo_client.adapters.FichaCampoRecyclerViewAdapter;
+import com.jeeps.fichas_campo_client.dialogs.LoginDialog;
 import com.jeeps.fichas_campo_client.model.FichaCampo;
+import com.jeeps.fichas_campo_client.model.User;
 import com.jeeps.fichas_campo_client.util.SimpleDividerItemDecoration;
 
 import java.util.ArrayList;
@@ -30,6 +32,7 @@ public class FichasCampoActivity extends AppCompatActivity
 
     private List<FichaCampo> mFichasCampo;
     private ApiFichaCampoAdapter mApiFichaCampoAdapter;
+    private User mCurrentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +41,9 @@ public class FichasCampoActivity extends AppCompatActivity
         ButterKnife.bind(this);
         setTitle("Fichas de Campo");
 
-        mApiFichaCampoAdapter = new ApiFichaCampoAdapter(this);
+        mCurrentUser = User.getInstance();
+
+        mApiFichaCampoAdapter = new ApiFichaCampoAdapter(this, mCurrentUser);
         try {
             mApiFichaCampoAdapter.requestFichasCampo();
         } catch (Exception e) {
@@ -91,6 +96,10 @@ public class FichasCampoActivity extends AppCompatActivity
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                return true;
+            case R.id.menu_login:
+                LoginDialog dialog = new LoginDialog(this, mCurrentUser);
+                dialog.show(getSupportFragmentManager(), "TAG");
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

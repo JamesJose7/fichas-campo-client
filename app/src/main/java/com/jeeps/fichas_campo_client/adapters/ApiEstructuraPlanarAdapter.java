@@ -36,4 +36,9 @@ public class ApiEstructuraPlanarAdapter implements EstructuraPlanarDaoPort,
         EstructuraPlanar estructuraPlanar = apiParserFacade.parseEstructuraPlanar(json);
         listener.estructuraPlanarReady(estructuraPlanar);
     }
+
+    @Override
+    public void onFailure() {
+
+    }
 }

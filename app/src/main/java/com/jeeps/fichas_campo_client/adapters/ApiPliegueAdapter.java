@@ -36,4 +36,9 @@ public class ApiPliegueAdapter implements PliegueDaoPort,
         Pliegue pliegue = apiParserFacade.parsePliegue(json);
         listener.pliegueReady(pliegue);
     }
+
+    @Override
+    public void onFailure() {
+
+    }
 }

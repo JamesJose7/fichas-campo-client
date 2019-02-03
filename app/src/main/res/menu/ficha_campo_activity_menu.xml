@@ -5,4 +5,10 @@
         android:id="@+id/menu_refresh"
         android:title="Refresh"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_login"
+        android:title="Login"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_person_black_24dp"/>
 </menu>

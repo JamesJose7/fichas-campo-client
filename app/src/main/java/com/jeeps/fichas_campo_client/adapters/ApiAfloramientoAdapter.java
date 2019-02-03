@@ -36,4 +36,9 @@ public class ApiAfloramientoAdapter implements AfloramientoDaoPort,
         Afloramiento afloramiento = apiParserFacade.parseAfloramiento(json);
         listener.afloramientoReady(afloramiento);
     }
+
+    @Override
+    public void onFailure() {
+
+    }
 }

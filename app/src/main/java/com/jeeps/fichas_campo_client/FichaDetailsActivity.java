@@ -2,7 +2,6 @@ package com.jeeps.fichas_campo_client;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,6 +27,7 @@ import java.text.SimpleDateFormat;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NavUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -125,13 +125,8 @@ public class FichaDetailsActivity extends AppCompatActivity implements
         ButterKnife.bind(this);
 
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Get Ficha de campo and subclasses url from intent
@@ -255,5 +250,11 @@ public class FichaDetailsActivity extends AppCompatActivity implements
             perfil.setText(pliegue.getPerfil());
             sistema.setText(pliegue.getSistema());
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        // Override back button to go back to the parent activity properly
+        NavUtils.navigateUpFromSameTask(this);
     }
 }
