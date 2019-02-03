@@ -14,16 +14,15 @@ public class EstructuraPlanar {
     public EstructuraPlanar() {
     }
 
-    public EstructuraPlanar(String buzamientoIntensidad, float azimut, String clivaje, String estratificacion,
-                            String fotogeologia, String zonaDeCizalla, String rocasMetaforicas, String rocasIgneas) {
-        this.buzamientoIntensidad = buzamientoIntensidad;
-        this.azimut = azimut;
-        this.clivaje = clivaje;
-        this.estratificacion = estratificacion;
-        this.fotogeologia = fotogeologia;
-        this.zonaDeCizalla = zonaDeCizalla;
-        this.rocasMetaforicas = rocasMetaforicas;
-        this.rocasIgneas = rocasIgneas;
+    public EstructuraPlanar(EstructuraPlanarBuilder builder) {
+        this.buzamientoIntensidad = builder.buzamientoIntensidad;
+        this.azimut = builder.azimut;
+        this.clivaje = builder.clivaje;
+        this.estratificacion = builder.estratificacion;
+        this.fotogeologia = builder.fotogeologia;
+        this.zonaDeCizalla = builder.zonaDeCizalla;
+        this.rocasMetaforicas = builder.rocasMetaforicas;
+        this.rocasIgneas = builder.rocasIgneas;
     }
 
     public String getBuzamientoIntensidad() {
@@ -89,52 +88,64 @@ public class EstructuraPlanar {
     public void setRocasIgneas(String rocasIgneas) {
         this.rocasIgneas = rocasIgneas;
     }
-}
 
-class EstructuraPlanarBuilder{
+    public static class EstructuraPlanarBuilder{
+        private String buzamientoIntensidad;
+        private float azimut;
+        private String clivaje;
+        private String estratificacion;
+        private String fotogeologia;
+        private String zonaDeCizalla;
+        // Foliacion
+        private String rocasMetaforicas;
+        private String rocasIgneas;
 
+        public EstructuraPlanarBuilder(){}
 
-    private EstructuraPlanar estructuraPlanar;
+        public EstructuraPlanar buid(){
+            return new EstructuraPlanar(this);
+        }
 
-    public EstructuraPlanarBuilder(){}
+        public EstructuraPlanarBuilder createBuzamientoIntensidad(String buzamientoIntensidad){
+            this.buzamientoIntensidad = buzamientoIntensidad;
+            return this;
+        }
 
-    public void buid(){
-        this.estructuraPlanar = new EstructuraPlanar();
+        public EstructuraPlanarBuilder createAzimut(float azimut){
+            this.azimut = azimut;
+            return this;
+        }
+
+        public EstructuraPlanarBuilder createClivaje(String clivaje){
+            this.clivaje = clivaje;
+            return this;
+        }
+
+        public EstructuraPlanarBuilder createEstratificacion(String estratificacion){
+            this.estratificacion = estratificacion;
+            return this;
+        }
+
+        public EstructuraPlanarBuilder createFotogeologia(String fotogeologia){
+            this.fotogeologia = fotogeologia;
+            return this;
+        }
+
+        public EstructuraPlanarBuilder createZonaDeCizalla(String zonaDeCizalla){
+            this.zonaDeCizalla = zonaDeCizalla;
+            return this;
+        }
+
+        public EstructuraPlanarBuilder createRocasMetaforicas(String rocasMetaforicas){
+            this.rocasMetaforicas = rocasMetaforicas;
+            return this;
+        }
+
+        public EstructuraPlanarBuilder createRocasIgneas(String rocasIgneas){
+            this.rocasIgneas = rocasIgneas;
+            return this;
+        }
     }
-
-    public void createBuzamientoIntensidad(String buzamientoIntensidad){
-        this.estructuraPlanar.setBuzamientoIntensidad(buzamientoIntensidad);
-    }
-
-    public void createAzimut(float azimut){
-        this.estructuraPlanar.setAzimut(azimut);
-    }
-
-    public void createClivaje(String clivaje){
-        this.estructuraPlanar.setClivaje(clivaje);
-    }
-
-    public void createEstratificacion(String estratificacion){
-        this.estructuraPlanar.setEstratificacion(estratificacion);
-    }
-
-    public void createFotogeologia(String fotogeologia){
-        this.estructuraPlanar.setFotogeologia(fotogeologia);
-    }
-
-    public void createZonaDeCizalla(String zonaDeCizalla){
-        this.estructuraPlanar.setZonaDeCizalla(zonaDeCizalla);
-    }
-
-    public void createRocasMetaforicas(String rocasMetaforicas){
-        this.estructuraPlanar.setRocasMetaforicas(rocasMetaforicas);
-    }
-
-    public void createRocasIgneas(String rocasIgneas){
-        this.estructuraPlanar.setRocasIgneas(rocasIgneas);
-    }
-
-    public EstructuraPlanar getEstructuraPlanar(){return this.estructuraPlanar;}
 }
 
 

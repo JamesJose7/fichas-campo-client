@@ -34,20 +34,18 @@ public class FichaCampo implements Serializable {
 
     public FichaCampo() { super(); }
 
-    public FichaCampo(String datum, String escala, String proyecto, String datosUbicacion, String descritaPor,
-                      String nomenclaturaUnidadGeologica, String tipoContactoGeo, String limiteContactoGeo,
-                      String certezaContactoGeo, String origenRoca, String estructuraRoca) {
-        this.datum = datum;
-        this.escala = escala;
-        this.proyecto = proyecto;
-        this.datosUbicacion = datosUbicacion;
-        this.descritaPor = descritaPor;
-        this.nomenclaturaUnidadGeologica = nomenclaturaUnidadGeologica;
-        this.tipoContactoGeo = tipoContactoGeo;
-        this.limiteContactoGeo = limiteContactoGeo;
-        this.certezaContactoGeo = certezaContactoGeo;
-        this.origenRoca = origenRoca;
-        this.estructuraRoca = estructuraRoca;
+    public FichaCampo(FichaCampoBuilder builder) {
+        this.datum = builder.datum;
+        this.escala = builder.escala;
+        this.proyecto = builder.proyecto;
+        this.datosUbicacion = builder.datosUbicacion;
+        this.descritaPor = builder.descritaPor;
+        this.nomenclaturaUnidadGeologica = builder.nomenclaturaUnidadGeologica;
+        this.tipoContactoGeo = builder.tipoContactoGeo;
+        this.limiteContactoGeo = builder.limiteContactoGeo;
+        this.certezaContactoGeo = builder.certezaContactoGeo;
+        this.origenRoca = builder.origenRoca;
+        this.estructuraRoca = builder.estructuraRoca;
     }
 
     public String getDatum() {
@@ -193,68 +191,103 @@ public class FichaCampo implements Serializable {
     public void setSelfLinks(JsonObject selfLinks) {
         this.selfLinks = selfLinks;
     }
-}
 
-class FichaCampoBuilder{
+    public static class FichaCampoBuilder{
+        private String datum;
+        private String escala;
+        private String proyecto;
+        private String datosUbicacion;
+        private String descritaPor;
+        private String nomenclaturaUnidadGeologica;
+        private String tipoContactoGeo;
+        private String limiteContactoGeo;
+        private String certezaContactoGeo;
+        private String origenRoca;
+        private String estructuraRoca;
 
+        private Ubicacion ubicacion;
 
-    private FichaCampo fichaCampo;
+        // Estructuras Geologicas
+        private EstructuraPlanar estructuraPlanar;
+        private EstructuraLineal estructuraLineal;
+        private Pliegue pliegue;
 
-    public FichaCampoBuilder(Muestra muestra, Afloramiento afloramiento, String origenRoca, String estructuraRoca, String nomenclaturaUnidadGeologica) {
-        this.fichaCampo.setMuestra(muestra);
-        this.fichaCampo.setAfloramiento(afloramiento);
-        this.fichaCampo.setOrigenRoca(origenRoca);
-        this.fichaCampo.setEstructuraRoca(estructuraRoca);
-        this.fichaCampo.setNomenclaturaUnidadGeologica(nomenclaturaUnidadGeologica);
+        // Catalogaciones
+        private Muestra muestra;
+        private Afloramiento afloramiento;
+
+        public FichaCampo build(){
+            return new FichaCampo(this);
+        }
+
+        public FichaCampoBuilder createDatum(String datum){
+            this.datum = datum;
+            return this;
+        }
+
+        public FichaCampoBuilder createEscala(String escala){
+            this.escala = escala;
+            return this;
+        }
+
+        public FichaCampoBuilder createProyecto(String proyecto){
+            this.proyecto = proyecto;
+            return this;
+        }
+
+        public FichaCampoBuilder createDatosUbicacion(String datosUbicacion) {
+            this.datosUbicacion = datosUbicacion;
+            return this;
+        }
+
+        public FichaCampoBuilder createDescritaPor(String descritaPor){
+            this.descritaPor = descritaPor;
+            return this;
+        }
+
+        public FichaCampoBuilder createTipoContactoGeo(String tipoContactoGeo){
+            this.tipoContactoGeo = tipoContactoGeo;
+            return this;
+        }
+
+        public FichaCampoBuilder createLimiteContactoGeo(String limiteContactoGeo) {
+            this.limiteContactoGeo = limiteContactoGeo;
+            return this;
+        }
+
+        public FichaCampoBuilder createCertezaContactoGeo(String certezaContactoGeo) {
+            this.certezaContactoGeo = certezaContactoGeo;
+            return this;
+        }
+
+        public FichaCampoBuilder createUbicacion(Ubicacion ubicacion) {
+            this.ubicacion = ubicacion;
+            return this;
+        }
+
+        public FichaCampoBuilder createEstructuraPlanar(EstructuraPlanar estructuraPlanar) {
+            this.estructuraPlanar = estructuraPlanar;
+            return this;
+        }
+
+        public FichaCampoBuilder createEstructuraLineal(EstructuraLineal estructuraLineal) {
+            this.estructuraLineal = estructuraLineal;
+            return this;
+        }
+
+        public FichaCampoBuilder createPliegue(Pliegue pliegue) {
+            this.pliegue = pliegue;
+            return this;
+        }
+
+        public FichaCampoBuilder createMuestra(Muestra muestra) {
+            this.muestra = muestra;
+            return this;
+        }
+
+        public FichaCampoBuilder createAfloramiento(Afloramiento afloramiento) {
+            this.afloramiento = afloramiento;
+            return this;
+        }
     }
-
-    public void build(){
-        this.fichaCampo = new FichaCampo();
-    }
-
-    public void createDatum(String datum){
-        this.fichaCampo.setDatum(datum);
-    }
-
-    public void createEscala(String escala){
-        this.fichaCampo.setEscala(escala);
-    }
-
-    public void createProyecto(String proyecto){
-        this.fichaCampo.setProyecto(proyecto);
-    }
-
-    public void createDatosUbicacion(String datosUbicacion){
-        this.fichaCampo.setDatosUbicacion(datosUbicacion);
-    }
-
-    public void createDescritaPor(String descritaPor){
-        this.fichaCampo.setDescritaPor(descritaPor);
-    }
-
-    public void createTipoContactoGeo(String tipoContactoGeo){
-        this.fichaCampo.setTipoContactoGeo(tipoContactoGeo);
-    }
-
-    public void createLimiteContactoGeo(String limiteContactoGeo) {
-        this.fichaCampo.setLimiteContactoGeo(limiteContactoGeo);
-    }
-
-    public void createCertezaContactoGeo(String certezaContactoGeo) {
-        this.fichaCampo.setCertezaContactoGeo(certezaContactoGeo);
-    }
-
-    public void createEstructuraPlanar(EstructuraPlanar estructuraPlanar) {
-        this.fichaCampo.setEstructuraPlanar(estructuraPlanar);
-    }
-
-    public void createEstructuraLineal(EstructuraLineal estructuraLineal) {
-        this.fichaCampo.setEstructuraLineal(estructuraLineal);
-    }
-
-    public void createPliegue(Pliegue pliegue) {
-        this.fichaCampo.setPliegue(pliegue);
-    }
-
-    public FichaCampo getFichaCampo(){ return this.fichaCampo;}
 }

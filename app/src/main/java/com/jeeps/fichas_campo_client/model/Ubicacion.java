@@ -12,12 +12,12 @@ public class Ubicacion {
 
     public Ubicacion() { super(); }
 
-    public Ubicacion(Date fecha, String provincia, String canton, String sector, String escala) {
-        this.fecha = fecha;
-        this.provincia = provincia;
-        this.canton = canton;
-        this.sector = sector;
-        this.escala = escala;
+    public Ubicacion(UbicacionBuilder builder) {
+        this.fecha = builder.fecha;
+        this.provincia = builder.provincia;
+        this.canton = builder.canton;
+        this.sector = builder.sector;
+        this.escala = builder.escala;
     }
 
     public Date getFecha() {
@@ -67,44 +67,49 @@ public class Ubicacion {
     public void setFoto(byte[] foto) {
         this.foto = foto;
     }
-}
 
-class UbicacionBuilder{
+    public static class UbicacionBuilder{
+        private Date fecha;
+        private String provincia;
+        private String canton;
+        private String sector;
+        private String escala;
+        private byte[] foto;
 
-    private Ubicacion ubicacion;
+        public UbicacionBuilder() {}
 
-    public UbicacionBuilder() {
+        public Ubicacion build(){
+            return new Ubicacion(this);
+        }
+
+        public UbicacionBuilder createFecha(Date fecha){
+            this.fecha = fecha;
+            return this;
+        }
+
+        public UbicacionBuilder createCanton(String canton){
+            this.canton = canton;
+            return this;
+        }
+
+        public UbicacionBuilder createProvincia(String provincia){
+            this.provincia = provincia;
+            return this;
+        }
+
+        public UbicacionBuilder createSector(String sector){
+            this.sector = sector;
+            return this;
+        }
+
+        public UbicacionBuilder createEscala(String escala){
+            this.escala = escala;
+            return this;
+        }
+
+        public UbicacionBuilder createFoto(byte[] foto){
+            this.foto = foto;
+            return this;
+        }
     }
-
-    public void build(){
-        this.ubicacion = new Ubicacion();
-    }
-
-    public void createFecha(){
-        Date date = new Date();
-        this.ubicacion.setFecha(date);
-    }
-
-    public void createCanton(String canton){
-        this.ubicacion.setCanton(canton);
-    }
-
-    public void createProvincia(String provincia){
-        this.ubicacion.setProvincia(provincia);
-    }
-
-    public void createSector(String sector){
-        this.ubicacion.setSector(sector);
-    }
-
-    public void createEscala(String escala){
-        this.ubicacion.setEscala(escala);
-    }
-
-    public void createFoto(byte[] foto){
-        this.ubicacion.setFoto(foto);
-    }
-
-    public Ubicacion getUbicacion(){ return this.ubicacion; }
-
 }

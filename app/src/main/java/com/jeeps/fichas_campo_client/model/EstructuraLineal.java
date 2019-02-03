@@ -11,19 +11,17 @@ public class EstructuraLineal {
     private String formacion;
     private String diaclasaClase;
 
-    public EstructuraLineal() {
-    }
+    public EstructuraLineal() {}
 
-    public EstructuraLineal(float rumbo, String claseEstrLineal, String lineacion, float direccion, String buzamiento,
-                            String asociacion, String formacion, String diaclasaClase) {
-        this.rumbo = rumbo;
-        this.claseEstrLineal = claseEstrLineal;
-        this.lineacion = lineacion;
-        this.direccion = direccion;
-        this.buzamiento = buzamiento;
-        this.asociacion = asociacion;
-        this.formacion = formacion;
-        this.diaclasaClase = diaclasaClase;
+    public EstructuraLineal(EstructuraLinealBuilder builder) {
+        this.rumbo = builder.rumbo;
+        this.claseEstrLineal = builder.claseEstrLineal;
+        this.lineacion = builder.lineacion;
+        this.direccion = builder.direccion;
+        this.buzamiento = builder.buzamiento;
+        this.asociacion = builder.asociacion;
+        this.formacion = builder.formacion;
+        this.diaclasaClase = builder.diaclasaClase;
     }
 
     public float getRumbo() {
@@ -89,49 +87,62 @@ public class EstructuraLineal {
     public void setDiaclasaClase(String diaclasaClase) {
         this.diaclasaClase = diaclasaClase;
     }
-}
 
-class EstructuraLinealBuilder{
+    public static class EstructuraLinealBuilder{
+        private float rumbo;
+        private String claseEstrLineal;
+        private String lineacion;
+        // Diaclasa
+        private float direccion;
+        private String buzamiento;
+        private String asociacion;
+        private String formacion;
+        private String diaclasaClase;
 
+        public EstructuraLinealBuilder(){}
 
-    private EstructuraLineal estructuraLineal;
+        public EstructuraLineal buid(){
+            return new EstructuraLineal(this);
+        }
 
-    public EstructuraLinealBuilder(){}
+        public EstructuraLinealBuilder createClaseEstrLineal(String claseEstrLineal){
+            this.claseEstrLineal = claseEstrLineal;
+            return this;
+        }
 
-    public void buid(){
-        this.estructuraLineal = new EstructuraLineal();
+        public EstructuraLinealBuilder createRumbo(float rumbo){
+            this.rumbo = rumbo;
+            return this;
+        }
+
+        public EstructuraLinealBuilder createLineacion(String lineacion){
+            this.lineacion = lineacion;
+            return this;
+        }
+
+        public EstructuraLinealBuilder createDireccion(float direccion){
+            this.direccion = direccion;
+            return this;
+        }
+
+        public EstructuraLinealBuilder createBuzamiento(String buzamiento){
+            this.buzamiento = buzamiento;
+            return this;
+        }
+
+        public EstructuraLinealBuilder createAsociacion(String asociacion){
+            this.asociacion = asociacion;
+            return this;
+        }
+
+        public EstructuraLinealBuilder createFormacion(String formacion){
+            this.formacion = formacion;
+            return this;
+        }
+
+        public EstructuraLinealBuilder createDiaclasaClase(String diaclasaClase){
+            this.diaclasaClase = diaclasaClase;
+            return this;
+        }
     }
-
-    public void createClaseEstrLineal(String claseEstrLineal){
-        this.estructuraLineal.setClaseEstrLineal(claseEstrLineal);
-    }
-
-    public void createRumbo(float rumbo){
-        this.estructuraLineal.setRumbo(rumbo);
-    }
-
-    public void createLineacion(String lineacion){
-        this.estructuraLineal.setLineacion(lineacion);
-    }
-
-    public void createDireccion(float direccion){
-        this.estructuraLineal.setDireccion(direccion);
-    }
-
-    public void createBuzamiento(String buzamiento){
-        this.estructuraLineal.setBuzamiento(buzamiento);
-    }
-
-    public void createAsociacion(String asociacion){
-        this.estructuraLineal.setAsociacion(asociacion);
-    }
-
-    public void createFormacion(String formacion){
-        this.estructuraLineal.setAsociacion(formacion);
-    }
-
-    public void createDiaclasaClase(String diaclasaClase){
-        this.estructuraLineal.setDiaclasaClase(diaclasaClase);
-    }
-
 }

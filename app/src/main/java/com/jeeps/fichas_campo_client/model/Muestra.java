@@ -15,19 +15,17 @@ public class Muestra {
     public Muestra() {
     }
 
-    public Muestra(String naturaleza, String tipo, String consistenciaMaterial, long codigo, String sitio,
-                   String tipoAnalisis, String metodoAnalisis, String nomenclaturaMetodoAnalisis,
-                   float cantidadMuestra, String observaciones) {
-        this.naturaleza = naturaleza;
-        this.tipo = tipo;
-        this.consistenciaMaterial = consistenciaMaterial;
-        this.codigo = codigo;
-        this.sitio = sitio;
-        this.tipoAnalisis = tipoAnalisis;
-        this.metodoAnalisis = metodoAnalisis;
-        this.nomenclaturaMetodoAnalisis = nomenclaturaMetodoAnalisis;
-        this.cantidadMuestra = cantidadMuestra;
-        this.observaciones = observaciones;
+    public Muestra(MuestraBuilder builder) {
+        this.naturaleza = builder.naturaleza;
+        this.tipo = builder.tipo;
+        this.consistenciaMaterial = builder.consistenciaMaterial;
+        this.codigo = builder.codigo;
+        this.sitio = builder.sitio;
+        this.tipoAnalisis = builder.tipoAnalisis;
+        this.metodoAnalisis = builder.metodoAnalisis;
+        this.nomenclaturaMetodoAnalisis = builder.nomenclaturaMetodoAnalisis;
+        this.cantidadMuestra = builder.cantidadMuestra;
+        this.observaciones = builder.observaciones;
     }
 
     public String getNaturaleza() {
@@ -109,56 +107,71 @@ public class Muestra {
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
-}
 
-class MuestraBuilder{
+    public static class MuestraBuilder{
+        private String naturaleza;
+        private String tipo;
+        private String consistenciaMaterial;
+        private long codigo;
+        private String sitio;
+        private String tipoAnalisis;
+        private String metodoAnalisis;
+        private String nomenclaturaMetodoAnalisis;
+        private float cantidadMuestra;
+        private String observaciones;
 
-    private Muestra muestra;
+        public Muestra build(){
+            return new Muestra();
+        }
 
-    public MuestraBuilder() {
-    }
+        public MuestraBuilder createNaturaleza(String naturaleza){
+            this.naturaleza = naturaleza;
+            return this;
+        }
 
-    public void build(){
-        this.muestra = new Muestra();
-    }
+        public MuestraBuilder createTipo(String tipo){
+            this.tipo = tipo;
+            return this;
+        }
 
-    public void createNaturaleza(String naturaleza){
-        this.muestra.setNaturaleza(naturaleza);
-    }
+        public MuestraBuilder createConsistenciaMaterial(String consistenciaMaterial){
+            this.consistenciaMaterial = consistenciaMaterial;
+            return this;
+        }
 
-    public void createTipo(String tipo){
-        this.muestra.setTipo(tipo);
-    }
+        public MuestraBuilder createCodigo(long codigo){
+            this.codigo = codigo;
+            return this;
+        }
 
-    public void createConsistenciaMaterial(String consistenciaMaterial){
-        this.muestra.setConsistenciaMaterial(consistenciaMaterial);
-    }
+        public MuestraBuilder createSitio(String sitio){
+            this.sitio = sitio;
+            return this;
+        }
 
-    public void createCodigo(long codigo){
-        this.muestra.setCodigo(codigo);
-    }
+        public MuestraBuilder createTipoAnalisis(String tipoAnalisis){
+            this.tipoAnalisis = tipoAnalisis;
+            return this;
+        }
 
-    public void createSitio(String sitio){
-        this.muestra.setSitio(sitio);
-    }
+        public MuestraBuilder createMetodoAnalisis(String metodoAnalisis){
+            this.metodoAnalisis = metodoAnalisis;
+            return this;
+        }
 
-    public void createTipoAnalisis(String tipoAnalisis){
-        this.muestra.setTipoAnalisis(tipoAnalisis);
-    }
+        public MuestraBuilder createNomenclaturaMetodoAnalisis(String nomenclaturaMetodoAnalisis){
+            this.nomenclaturaMetodoAnalisis = nomenclaturaMetodoAnalisis;
+            return this;
+        }
 
-    public void createMetodoAnalisis(String metodoAnalisis){
-        this.muestra.setMetodoAnalisis(metodoAnalisis);
-    }
+        public MuestraBuilder createCantidadMuestra(float cantidadMuestra){
+            this.cantidadMuestra = cantidadMuestra;
+            return this;
+        }
 
-    public void createNomenclaturaMetodoAnalisis(String nomenclaturaMetodoAnalisis){
-        this.muestra.setNomenclaturaMetodoAnalisis(nomenclaturaMetodoAnalisis);
-    }
-
-    public void createCantidadMuestra(float cantidadMuestra){
-        this.muestra.setCantidadMuestra(cantidadMuestra);
-    }
-
-    public void createObservaciones(String observaciones) {
-        this.muestra.setObservaciones(observaciones);
+        public MuestraBuilder createObservaciones(String observaciones) {
+            this.observaciones = observaciones;
+            return this;
+        }
     }
 }

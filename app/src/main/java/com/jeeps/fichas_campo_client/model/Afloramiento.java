@@ -6,14 +6,13 @@ public class Afloramiento {
     private String tipoRoca;
     private String sitio;
 
-    public Afloramiento() {
-    }
+    public Afloramiento() {}
 
-    public Afloramiento(String dimension, String origen, String tipoRoca, String sitio) {
-        this.dimension = dimension;
-        this.origen = origen;
-        this.tipoRoca = tipoRoca;
-        this.sitio = sitio;
+    public Afloramiento(AfloramientoBuilder builder) {
+        this.dimension = builder.dimension;
+        this.origen = builder.origen;
+        this.tipoRoca = builder.tipoRoca;
+        this.sitio = builder.sitio;
     }
 
     public String getDimension() {
@@ -47,34 +46,36 @@ public class Afloramiento {
     public void setSitio(String sitio) {
         this.sitio = sitio;
     }
-}
 
+    public static class AfloramientoBuilder{
+        private String dimension;
+        private String origen;
+        private String tipoRoca;
+        private String sitio;
 
-class AfloramientoBuilder{
+        public Afloramiento build(){
+            return new Afloramiento(this);
+        }
 
-    private Afloramiento afloramiento;
+        public AfloramientoBuilder createDimension(String dimension){
+            this.dimension = dimension;
+            return this;
+        }
 
-    public AfloramientoBuilder() {
+        public AfloramientoBuilder createOrigen(String origen){
+            this.origen = origen;
+            return this;
+        }
+
+        public AfloramientoBuilder createTipoRoca(String tipoRoca){
+            this.tipoRoca = tipoRoca;
+            return this;
+        }
+
+        public AfloramientoBuilder createSitio(String sitio){
+            this.sitio = sitio;
+            return this;
+        }
+
     }
-
-    public void build(){
-        this.afloramiento = new Afloramiento();
-    }
-
-    public void createDimension(String dimension){
-        this.afloramiento.setDimension(dimension);
-    }
-
-    public void createOrigen(String origen){
-        this.afloramiento.setOrigen(origen);
-    }
-
-    public void createTipoRoca(String tipoRoca){
-        this.afloramiento.setTipoRoca(tipoRoca);
-    }
-
-    public void createSitio(String sitio){
-        this.afloramiento.setSitio(sitio);
-    }
-
 }

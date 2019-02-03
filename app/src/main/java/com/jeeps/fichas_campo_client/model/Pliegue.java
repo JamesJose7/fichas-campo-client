@@ -14,17 +14,16 @@ public class Pliegue {
     public Pliegue() {
     }
 
-    public Pliegue(float rumbo, float buzamiento, String tipo, float altura, float separacion,
-                   String posicion, String anguloEntreFlancos, String perfil, String sistema) {
-        this.rumbo = rumbo;
-        this.buzamiento = buzamiento;
-        this.tipo = tipo;
-        this.altura = altura;
-        this.separacion = separacion;
-        this.posicion = posicion;
-        this.anguloEntreFlancos = anguloEntreFlancos;
-        this.perfil = perfil;
-        this.sistema = sistema;
+    public Pliegue(PliegueBuilder builder) {
+        this.rumbo = builder.rumbo;
+        this.buzamiento = builder.buzamiento;
+        this.tipo = builder.tipo;
+        this.altura = builder.altura;
+        this.separacion = builder.separacion;
+        this.posicion = builder.posicion;
+        this.anguloEntreFlancos = builder.anguloEntreFlancos;
+        this.perfil = builder.perfil;
+        this.sistema = builder.sistema;
     }
 
     public float getRumbo() {
@@ -98,50 +97,54 @@ public class Pliegue {
     public void setSistema(String sistema) {
         this.sistema = sistema;
     }
-}
 
-class PliegueBuilder{
+    public static class PliegueBuilder{
+        private float rumbo;
+        private float buzamiento;
+        private String tipo;
+        private float altura;
+        private float separacion;
+        private String posicion;
+        private String anguloEntreFlancos;
+        private String perfil;
+        private String sistema;
 
-    private Pliegue pliegue;
+        public PliegueBuilder() {}
 
-    public PliegueBuilder() {
+        public Pliegue build(){
+            return new Pliegue(this);
+        }
+
+        public PliegueBuilder createRumbo(float rumbo){
+            return this;
+        }
+
+        public PliegueBuilder createBuzamiento(float buzamiento){
+            return this;
+        }
+
+        public PliegueBuilder createTipo(String tipo){
+            return this;
+        }
+
+        public PliegueBuilder createAltura(float altura){
+            return this;
+        }
+
+        public PliegueBuilder createSeparacion(float separacion){
+            return this;
+        }
+
+        public PliegueBuilder createAnguloEntreFlancos(String anguloEntreFlancos){
+            return this;
+        }
+
+        public PliegueBuilder createPerfil(String perfil){
+            return this;
+        }
+
+        public PliegueBuilder createSistema(String sistema){
+            return this;
+        }
     }
-
-    public void build(){
-        this.pliegue = new Pliegue();
-    }
-
-    public void createRumbo(float rumbo){
-        this.pliegue.setRumbo(rumbo);
-    }
-
-    public void createBuzamiento(float buzamiento){
-        this.pliegue.setBuzamiento(buzamiento);
-    }
-
-    public void createTipo(String tipo){
-        this.pliegue.setTipo(tipo);
-    }
-
-    public void createAltura(float altura){
-        this.pliegue.setAltura(altura);
-    }
-
-    public void createSeparacion(float separacion){
-        this.pliegue.setSeparacion(separacion);
-    }
-
-    public void createAnguloEntreFlancos(String anguloEntreFlancos){
-        this.pliegue.setAnguloEntreFlancos(anguloEntreFlancos);
-    }
-
-    public void createPerfil(String perfil){
-        this.pliegue.setPerfil(perfil);
-    }
-
-    public void createSistema(String sistema){
-        this.pliegue.setSistema(sistema);
-    }
-
-    public Pliegue getPliegue(){return this.pliegue;}
 }

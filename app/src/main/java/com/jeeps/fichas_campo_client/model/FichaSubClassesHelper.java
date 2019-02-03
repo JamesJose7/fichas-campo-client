@@ -11,6 +11,18 @@ public class FichaSubClassesHelper implements Serializable {
     private String afloramientoUrl;
     private String pliegueUrl;
 
+    public FichaSubClassesHelper() {}
+
+    public FichaSubClassesHelper(FichaSubClassesHelperBuilder builder) {
+        this.selfUrl = builder.selfUrl;
+        this.muestraUrl = builder.muestraUrl;
+        this.estructuraPlanarUrl = builder.estructuraPlanarUrl;
+        this.ubicacionUrl = builder.ubicacionUrl;
+        this.estructuraLinealUrl = builder.estructuraLinealUrl;
+        this.afloramientoUrl = builder.afloramientoUrl;
+        this.pliegueUrl = builder.pliegueUrl;
+    }
+
     public String getSelfUrl() {
         return selfUrl;
     }
@@ -66,48 +78,55 @@ public class FichaSubClassesHelper implements Serializable {
     public void setPliegueUrl(String pliegueUrl) {
         this.pliegueUrl = pliegueUrl;
     }
-}
 
-class FichaSubClassesHelperBuilder{
+    public static class FichaSubClassesHelperBuilder{
+        private String selfUrl;
+        private String muestraUrl;
+        private String estructuraPlanarUrl;
+        private String ubicacionUrl;
+        private String estructuraLinealUrl;
+        private String afloramientoUrl;
+        private String pliegueUrl;
 
+        public FichaSubClassesHelperBuilder() {}
 
-    private FichaSubClassesHelper fichaSubClassesHelper;
+        public FichaSubClassesHelper build(){
+            return new FichaSubClassesHelper(this);
+        }
 
-    public FichaSubClassesHelperBuilder() {
+        public FichaSubClassesHelperBuilder createSelfUrl(String selfUrl){
+            this.selfUrl = selfUrl;
+            return this;
+        }
+
+        public FichaSubClassesHelperBuilder createMuestraUrl(String muestraUrl){
+            this.muestraUrl = muestraUrl;
+            return this;
+        }
+
+        public FichaSubClassesHelperBuilder createEstructuraPlanarUrl(String estructuraPlanarUrl){
+            this.estructuraPlanarUrl = estructuraPlanarUrl;
+            return this;
+        }
+
+        public FichaSubClassesHelperBuilder createUbicacionUrl(String ubicacionUrl){
+            this.ubicacionUrl = ubicacionUrl;
+            return this;
+        }
+
+        public FichaSubClassesHelperBuilder createEstructuraLinealUrl(String estructuraLinealUrl){
+            this.estructuraLinealUrl = estructuraLinealUrl;
+            return this;
+        }
+
+        public FichaSubClassesHelperBuilder createAfloramientoUrl(String afloramientoUrl){
+            this.afloramientoUrl = afloramientoUrl;
+            return this;
+        }
+
+        public FichaSubClassesHelperBuilder createPliegueUrl(String pliegueUrl){
+            this.pliegueUrl = pliegueUrl;
+            return this;
+        }
     }
-
-    public void build(){
-        this.fichaSubClassesHelper = new FichaSubClassesHelper();
-    }
-
-    public void createSelfUrl(String selfUrl){
-        this.fichaSubClassesHelper.setSelfUrl(selfUrl);
-    }
-
-    public void createMuestraUrl(String muestraUrl){
-        this.fichaSubClassesHelper.setMuestraUrl(muestraUrl);
-    }
-
-    public void createEstructuraPlanarUrl(String estructuraPlanarUrl){
-        this.fichaSubClassesHelper.setEstructuraPlanarUrl(estructuraPlanarUrl);
-    }
-
-    public void createUbicacionUrl(String ubicacionUrl){
-        this.fichaSubClassesHelper.setUbicacionUrl(ubicacionUrl);
-    }
-
-    public void createEstructuraLinealUrl(String estructuraLinealUrl){
-        this.fichaSubClassesHelper.setEstructuraLinealUrl(estructuraLinealUrl);
-    }
-
-    public void createAfloramientoUrl(String afloramientoUrl){
-        this.fichaSubClassesHelper.setAfloramientoUrl(afloramientoUrl);
-    }
-
-    public void createPliegueUrl(String pliegueUrl){
-        this.fichaSubClassesHelper.setPliegueUrl(pliegueUrl);
-    }
-
-    public FichaSubClassesHelper getFichaSubClassesHelper(){ return this.fichaSubClassesHelper; }
-
 }
