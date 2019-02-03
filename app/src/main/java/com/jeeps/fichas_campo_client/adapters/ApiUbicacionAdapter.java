@@ -1,6 +1,7 @@
 package com.jeeps.fichas_campo_client.adapters;
 
 import com.jeeps.fichas_campo_client.model.Ubicacion;
+import com.jeeps.fichas_campo_client.model.User;
 import com.jeeps.fichas_campo_client.ports.UbicacionDaoPort;
 import com.jeeps.fichas_campo_client.service.HttpService;
 import com.jeeps.fichas_campo_client.util.ApiParserFacade;
@@ -30,7 +31,7 @@ public class ApiUbicacionAdapter implements UbicacionDaoPort,
     @Override
     public void requestUbicacion(String url) {
         try {
-            httpService.sendRequest(url);
+            httpService.sendAuthRequest(url, User.getInstance());
         } catch (Exception e) {
             e.printStackTrace();
         }

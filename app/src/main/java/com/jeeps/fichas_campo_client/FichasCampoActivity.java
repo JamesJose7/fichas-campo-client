@@ -43,7 +43,7 @@ public class FichasCampoActivity extends AppCompatActivity
 
         mCurrentUser = User.getInstance();
 
-        mApiFichaCampoAdapter = new ApiFichaCampoAdapter(this, mCurrentUser);
+        mApiFichaCampoAdapter = new ApiFichaCampoAdapter(this);
         try {
             mApiFichaCampoAdapter.requestFichasCampo();
         } catch (Exception e) {

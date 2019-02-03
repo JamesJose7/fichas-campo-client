@@ -1,6 +1,7 @@
 package com.jeeps.fichas_campo_client.adapters;
 
 import com.jeeps.fichas_campo_client.model.EstructuraLineal;
+import com.jeeps.fichas_campo_client.model.User;
 import com.jeeps.fichas_campo_client.ports.EstructuraLinealDaoPort;
 import com.jeeps.fichas_campo_client.service.HttpService;
 import com.jeeps.fichas_campo_client.util.ApiParserFacade;
@@ -25,7 +26,7 @@ public class ApiEstructuraLinealAdapter implements EstructuraLinealDaoPort,
     @Override
     public void requestEstructuraLineal(String url) {
         try {
-            httpService.sendRequest(url);
+            httpService.sendAuthRequest(url, User.getInstance());
         } catch (Exception e) {
             e.printStackTrace();
         }

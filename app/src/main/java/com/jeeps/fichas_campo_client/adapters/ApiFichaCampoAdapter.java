@@ -18,23 +18,21 @@ public class ApiFichaCampoAdapter implements FichaCampoDaoPort,
     private ApiFichaCampoListener listener;
     private HttpService httpService;
     private ApiParserFacade apiParserFacade;
-    private User mUser;
 
     public interface ApiFichaCampoListener {
         void fichasCampoReady(List<FichaCampo> fichasCampo);
     }
 
-    public ApiFichaCampoAdapter(ApiFichaCampoListener listener, User user) {
+    public ApiFichaCampoAdapter(ApiFichaCampoListener listener) {
         this.listener = listener;
         httpService = new HttpService(this);
         apiParserFacade = new ApiParserFacade();
-        mUser = user;
     }
 
     @Override
     public void requestFichasCampo() {
         try {
-            httpService.sendAuthRequest(FICHAS_CAMPO_URL, mUser);
+            httpService.sendAuthRequest(FICHAS_CAMPO_URL, User.getInstance());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -54,9 +52,5 @@ public class ApiFichaCampoAdapter implements FichaCampoDaoPort,
     @Override
     public void onFailure() {
         listener.fichasCampoReady(new ArrayList<>());
-    }
-
-    public void setUser(User user) {
-        mUser = user;
     }
 }
