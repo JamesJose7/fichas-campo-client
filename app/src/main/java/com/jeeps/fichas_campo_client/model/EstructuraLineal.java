@@ -90,3 +90,48 @@ public class EstructuraLineal {
         this.diaclasaClase = diaclasaClase;
     }
 }
+
+class EstructuraLinealBuilder{
+
+
+    private EstructuraLineal estructuraLineal;
+
+    public EstructuraLinealBuilder(){}
+
+    public void buid(){
+        this.estructuraLineal = new EstructuraLineal();
+    }
+
+    public void createClaseEstrLineal(String claseEstrLineal){
+        this.estructuraLineal.setClaseEstrLineal(claseEstrLineal);
+    }
+
+    public void createRumbo(float rumbo){
+        this.estructuraLineal.setRumbo(rumbo);
+    }
+
+    public void createLineacion(String lineacion){
+        this.estructuraLineal.setLineacion(lineacion);
+    }
+
+    public void createDireccion(float direccion){
+        this.estructuraLineal.setDireccion(direccion);
+    }
+
+    public void createBuzamiento(String buzamiento){
+        this.estructuraLineal.setBuzamiento(buzamiento);
+    }
+
+    public void createAsociacion(String asociacion){
+        this.estructuraLineal.setAsociacion(asociacion);
+    }
+
+    public void createFormacion(String formacion){
+        this.estructuraLineal.setAsociacion(formacion);
+    }
+
+    public void createDiaclasaClase(String diaclasaClase){
+        this.estructuraLineal.setDiaclasaClase(diaclasaClase);
+    }
+
+}

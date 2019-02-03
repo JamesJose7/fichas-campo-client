@@ -90,3 +90,51 @@ public class EstructuraPlanar {
         this.rocasIgneas = rocasIgneas;
     }
 }
+
+class EstructuraPlanarBuilder{
+
+
+    private EstructuraPlanar estructuraPlanar;
+
+    public EstructuraPlanarBuilder(){}
+
+    public void buid(){
+        this.estructuraPlanar = new EstructuraPlanar();
+    }
+
+    public void createBuzamientoIntensidad(String buzamientoIntensidad){
+        this.estructuraPlanar.setBuzamientoIntensidad(buzamientoIntensidad);
+    }
+
+    public void createAzimut(float azimut){
+        this.estructuraPlanar.setAzimut(azimut);
+    }
+
+    public void createClivaje(String clivaje){
+        this.estructuraPlanar.setClivaje(clivaje);
+    }
+
+    public void createEstratificacion(String estratificacion){
+        this.estructuraPlanar.setEstratificacion(estratificacion);
+    }
+
+    public void createFotogeologia(String fotogeologia){
+        this.estructuraPlanar.setFotogeologia(fotogeologia);
+    }
+
+    public void createZonaDeCizalla(String zonaDeCizalla){
+        this.estructuraPlanar.setZonaDeCizalla(zonaDeCizalla);
+    }
+
+    public void createRocasMetaforicas(String rocasMetaforicas){
+        this.estructuraPlanar.setRocasMetaforicas(rocasMetaforicas);
+    }
+
+    public void createRocasIgneas(String rocasIgneas){
+        this.estructuraPlanar.setRocasIgneas(rocasIgneas);
+    }
+
+    public EstructuraPlanar getEstructuraPlanar(){return this.estructuraPlanar;}
+}
+
+

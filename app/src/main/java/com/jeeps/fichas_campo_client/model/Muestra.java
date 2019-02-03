@@ -110,3 +110,55 @@ public class Muestra {
         this.observaciones = observaciones;
     }
 }
+
+class MuestraBuilder{
+
+    private Muestra muestra;
+
+    public MuestraBuilder() {
+    }
+
+    public void build(){
+        this.muestra = new Muestra();
+    }
+
+    public void createNaturaleza(String naturaleza){
+        this.muestra.setNaturaleza(naturaleza);
+    }
+
+    public void createTipo(String tipo){
+        this.muestra.setTipo(tipo);
+    }
+
+    public void createConsistenciaMaterial(String consistenciaMaterial){
+        this.muestra.setConsistenciaMaterial(consistenciaMaterial);
+    }
+
+    public void createCodigo(long codigo){
+        this.muestra.setCodigo(codigo);
+    }
+
+    public void createSitio(String sitio){
+        this.muestra.setSitio(sitio);
+    }
+
+    public void createTipoAnalisis(String tipoAnalisis){
+        this.muestra.setTipoAnalisis(tipoAnalisis);
+    }
+
+    public void createMetodoAnalisis(String metodoAnalisis){
+        this.muestra.setMetodoAnalisis(metodoAnalisis);
+    }
+
+    public void createNomenclaturaMetodoAnalisis(String nomenclaturaMetodoAnalisis){
+        this.muestra.setNomenclaturaMetodoAnalisis(nomenclaturaMetodoAnalisis);
+    }
+
+    public void createCantidadMuestra(float cantidadMuestra){
+        this.muestra.setCantidadMuestra(cantidadMuestra);
+    }
+
+    public void createObservaciones(String observaciones) {
+        this.muestra.setObservaciones(observaciones);
+    }
+}

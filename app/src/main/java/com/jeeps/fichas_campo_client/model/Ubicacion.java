@@ -68,3 +68,43 @@ public class Ubicacion {
         this.foto = foto;
     }
 }
+
+class UbicacionBuilder{
+
+    private Ubicacion ubicacion;
+
+    public UbicacionBuilder() {
+    }
+
+    public void build(){
+        this.ubicacion = new Ubicacion();
+    }
+
+    public void createFecha(){
+        Date date = new Date();
+        this.ubicacion.setFecha(date);
+    }
+
+    public void createCanton(String canton){
+        this.ubicacion.setCanton(canton);
+    }
+
+    public void createProvincia(String provincia){
+        this.ubicacion.setProvincia(provincia);
+    }
+
+    public void createSector(String sector){
+        this.ubicacion.setSector(sector);
+    }
+
+    public void createEscala(String escala){
+        this.ubicacion.setEscala(escala);
+    }
+
+    public void createFoto(byte[] foto){
+        this.ubicacion.setFoto(foto);
+    }
+
+    public Ubicacion getUbicacion(){ return this.ubicacion; }
+
+}
