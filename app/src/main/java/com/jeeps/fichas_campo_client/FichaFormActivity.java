@@ -1,6 +1,11 @@
 package com.jeeps.fichas_campo_client;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -17,13 +22,17 @@ import com.jeeps.fichas_campo_client.model.FichaCampo;
 import com.jeeps.fichas_campo_client.model.Ubicacion;
 import com.jeeps.fichas_campo_client.util.ApiParserFacade;
 
+import java.io.ByteArrayOutputStream;
+import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class FichaFormActivity extends AppCompatActivity implements
         ApiFichaCampoAdapter.ApiFichaCampoListener,
@@ -60,6 +69,7 @@ public class FichaFormActivity extends AppCompatActivity implements
     @BindView(R.id.foto_ubicacion) ImageView foto;
 
     private String fichaCampoLinks = "";
+    private String mByteArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +101,7 @@ public class FichaFormActivity extends AppCompatActivity implements
                 .createCanton(canton.getText().toString())
                 .createSector(sector.getText().toString())
                 .createEscala(escala.getText().toString())
-                .createFoto(new byte[100])
+                .createFoto(mByteArray)
                 .build();
         mApiUbicacionAdapter.saveUbicacion(ubicacion);
     }
@@ -127,5 +137,26 @@ public class FichaFormActivity extends AppCompatActivity implements
 
     private String getAbsUrl(String name, String ubicacionUrl) {
         return "\"" + name + "\": \"" + "/api/" + ubicacionUrl.split("/api/")[1] + "\"";
+    }
+
+    @OnClick(R.id.photo_button)
+    public void takePhoto(View v) {
+        Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(takePicture, 0);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 0 && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            foto.setImageBitmap(imageBitmap);
+            Bitmap compressedImage = (Bitmap) extras.get("data");
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            compressedImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            mByteArray = new String(Base64.getEncoder().encode(stream.toByteArray()));
+            //compressedImage.recycle();
+        }
     }
 }

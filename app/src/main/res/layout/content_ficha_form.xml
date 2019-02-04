@@ -245,6 +245,10 @@
                 android:textSize="13sp"
                 android:text="Foto:"
                 android:layout_marginTop="6dp"/>
+            <Button
+                android:id="@+id/photo_button"
+                android:layout_width="36dp"
+                android:layout_height="36dp" />
             <ImageView
                 android:id="@+id/foto_ubicacion"
                 android:layout_width="match_parent"

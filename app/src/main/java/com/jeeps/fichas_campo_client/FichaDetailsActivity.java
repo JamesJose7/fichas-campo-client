@@ -1,6 +1,9 @@
 package com.jeeps.fichas_campo_client;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,7 +27,9 @@ import com.jeeps.fichas_campo_client.model.Pliegue;
 import com.jeeps.fichas_campo_client.model.Ubicacion;
 
 import java.text.SimpleDateFormat;
+import java.util.Base64;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.NavUtils;
@@ -171,6 +176,7 @@ public class FichaDetailsActivity extends AppCompatActivity implements
         mApiAfloramientoAdapter.requestAfloramiento(fichaSubClassesHelper.getAfloramientoUrl());
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void ubicacionReady(Ubicacion ubicacion) {
         runOnUiThread(() -> {
@@ -180,6 +186,9 @@ public class FichaDetailsActivity extends AppCompatActivity implements
             canton.setText(ubicacion.getCanton());
             sector.setText(ubicacion.getSector());
             escala.setText(ubicacion.getEscala());
+            byte[] decodedPicture = Base64.getDecoder().decode(ubicacion.getFoto());
+            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedPicture, 0, decodedPicture.length);
+            foto.setImageBitmap(decodedByte);
         });
     }
 

@@ -8,7 +8,7 @@ public class Ubicacion {
     private String canton;
     private String sector;
     private String escala;
-    private byte[] foto;
+    private String foto;
 
     public Ubicacion() { super(); }
 
@@ -61,11 +61,11 @@ public class Ubicacion {
         this.escala = escala;
     }
 
-    public byte[] getFoto() {
+    public String getFoto() {
         return foto;
     }
 
-    public void setFoto(byte[] foto) {
+    public void setFoto(String foto) {
         this.foto = foto;
     }
 
@@ -75,7 +75,7 @@ public class Ubicacion {
         private String canton;
         private String sector;
         private String escala;
-        private byte[] foto;
+        private String foto;
 
         public UbicacionBuilder() {}
 
@@ -108,7 +108,7 @@ public class Ubicacion {
             return this;
         }
 
-        public UbicacionBuilder createFoto(byte[] foto){
+        public UbicacionBuilder createFoto(String foto){
             this.foto = foto;
             return this;
         }

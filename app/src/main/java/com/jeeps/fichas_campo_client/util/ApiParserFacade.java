@@ -1,5 +1,7 @@
 package com.jeeps.fichas_campo_client.util;
 
+import android.os.Build;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.jeeps.fichas_campo_client.model.Afloramiento;
@@ -18,6 +20,8 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.List;
+
+import androidx.annotation.RequiresApi;
 
 public class ApiParserFacade {
     private Gson gson;
@@ -97,6 +101,7 @@ public class ApiParserFacade {
         return preLinks.replace("}", String.format(",\n%s\n}", links));
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public String getJsonFromUbicacion(Ubicacion ubicacion) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
         return String.format("{" +
@@ -104,8 +109,9 @@ public class ApiParserFacade {
                         "\"escala\": \"%s\"," +
                         "\"fecha\": \"%s\"," +
                         "\"provincia\": \"%s\"," +
-                        "\"sector\": \"%s\"" +
+                        "\"sector\": \"%s\"," +
+                        "\"foto\": \"%s\"" +
                 "}", ubicacion.getCanton(), ubicacion.getEscala(), dateFormat.format(ubicacion.getFecha()),
-                    ubicacion.getProvincia(), ubicacion.getSector());
+                    ubicacion.getProvincia(), ubicacion.getSector(), ubicacion.getFoto());
     }
 }
