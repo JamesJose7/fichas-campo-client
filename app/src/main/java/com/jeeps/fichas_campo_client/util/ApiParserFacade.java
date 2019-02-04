@@ -15,6 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.List;
 
@@ -87,5 +88,24 @@ public class ApiParserFacade {
 
     public Pliegue parsePliegue(String json) {
         return gson.fromJson(json, Pliegue.class);
+    }
+
+    public String getJsonFromFichaCampo(FichaCampo fichaCampo) {
+        String links = fichaCampo.getSubclassesLinks();
+        fichaCampo.setSubclassesLinks(null);
+        String preLinks =  gson.toJson(fichaCampo);
+        return preLinks.replace("}", String.format(",\n%s\n}", links));
+    }
+
+    public String getJsonFromUbicacion(Ubicacion ubicacion) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+        return String.format("{" +
+                        "\"canton\": \"%s\"," +
+                        "\"escala\": \"%s\"," +
+                        "\"fecha\": \"%s\"," +
+                        "\"provincia\": \"%s\"," +
+                        "\"sector\": \"%s\"" +
+                "}", ubicacion.getCanton(), ubicacion.getEscala(), dateFormat.format(ubicacion.getFecha()),
+                    ubicacion.getProvincia(), ubicacion.getSector());
     }
 }

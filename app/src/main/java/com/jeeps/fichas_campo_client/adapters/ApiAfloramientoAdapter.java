@@ -42,4 +42,9 @@ public class ApiAfloramientoAdapter implements AfloramientoDaoPort,
     public void onFailure() {
 
     }
+
+    @Override
+    public void postResult(String json) {
+
+    }
 }

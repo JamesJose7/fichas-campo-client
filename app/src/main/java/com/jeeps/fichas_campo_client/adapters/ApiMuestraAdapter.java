@@ -42,4 +42,9 @@ public class ApiMuestraAdapter implements MuestraDaoPort,
     public void onFailure() {
 
     }
+
+    @Override
+    public void postResult(String json) {
+
+    }
 }

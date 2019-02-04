@@ -18,6 +18,7 @@ public class Ubicacion {
         this.canton = builder.canton;
         this.sector = builder.sector;
         this.escala = builder.escala;
+        this.foto = builder.foto;
     }
 
     public Date getFecha() {

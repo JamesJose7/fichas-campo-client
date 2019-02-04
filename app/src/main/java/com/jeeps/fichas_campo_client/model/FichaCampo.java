@@ -1,6 +1,7 @@
 package com.jeeps.fichas_campo_client.model;
 
 import com.google.gson.JsonObject;
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
@@ -31,6 +32,9 @@ public class FichaCampo implements Serializable {
 
     @SerializedName("_links")
     private JsonObject selfLinks;
+
+    @Expose(deserialize = false, serialize = false)
+    private String subclassesLinks;
 
     public FichaCampo() { super(); }
 
@@ -192,6 +196,14 @@ public class FichaCampo implements Serializable {
         this.selfLinks = selfLinks;
     }
 
+    public String getSubclassesLinks() {
+        return subclassesLinks;
+    }
+
+    public void setSubclassesLinks(String subclassesLinks) {
+        this.subclassesLinks = subclassesLinks;
+    }
+
     public static class FichaCampoBuilder{
         private String datum;
         private String escala;
@@ -218,6 +230,21 @@ public class FichaCampo implements Serializable {
 
         public FichaCampo build(){
             return new FichaCampo(this);
+        }
+
+        public FichaCampoBuilder createNomenclatura(String nomenclaturaUnidadGeologica){
+            this.nomenclaturaUnidadGeologica = nomenclaturaUnidadGeologica;
+            return this;
+        }
+
+        public FichaCampoBuilder createOrigenRoca(String origenRoca){
+            this.origenRoca = origenRoca;
+            return this;
+        }
+
+        public FichaCampoBuilder createEstructuraRoca(String estructuraRoca){
+            this.estructuraRoca = estructuraRoca;
+            return this;
         }
 
         public FichaCampoBuilder createDatum(String datum){

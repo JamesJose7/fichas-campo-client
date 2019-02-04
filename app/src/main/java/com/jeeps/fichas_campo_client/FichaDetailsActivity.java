@@ -184,6 +184,9 @@ public class FichaDetailsActivity extends AppCompatActivity implements
     }
 
     @Override
+    public void ubicacionSaved(String ubicacionUrl) {}
+
+    @Override
     public void afloramientoReady(Afloramiento afloramiento) {
         runOnUiThread(() -> {
             dimension.setText(afloramiento.getDimension());

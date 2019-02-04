@@ -11,4 +11,9 @@
         android:title="Login"
         app:showAsAction="ifRoom"
         android:icon="@drawable/ic_person_black_24dp"/>
+    <item
+        android:id="@+id/menu_add_ficha"
+        android:title="Agregar"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_add_black_24dp"/>
 </menu>

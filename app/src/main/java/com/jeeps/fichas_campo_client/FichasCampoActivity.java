@@ -1,5 +1,6 @@
 package com.jeeps.fichas_campo_client;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -101,6 +102,9 @@ public class FichasCampoActivity extends AppCompatActivity
                 LoginDialog dialog = new LoginDialog(this, mCurrentUser);
                 dialog.show(getSupportFragmentManager(), "TAG");
                 return true;
+            case R.id.menu_add_ficha:
+                Intent intent = new Intent(this, FichaFormActivity.class);
+                startActivity(intent);
             default:
                 return super.onOptionsItemSelected(item);
         }

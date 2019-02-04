@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".FichaFormActivity"
+            android:label="@string/title_activity_ficha_form"
+            android:parentActivityName=".FichasCampoActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.jeeps.fichas_campo_client.FichasCampoActivity" />
+        </activity>
+        <activity
             android:name=".FichaDetailsActivity"
             android:label="@string/title_activity_ficha_detailes"
             android:parentActivityName=".FichasCampoActivity"

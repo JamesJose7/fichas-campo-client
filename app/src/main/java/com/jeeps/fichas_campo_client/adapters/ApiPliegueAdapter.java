@@ -42,4 +42,9 @@ public class ApiPliegueAdapter implements PliegueDaoPort,
     public void onFailure() {
 
     }
+
+    @Override
+    public void postResult(String json) {
+
+    }
 }

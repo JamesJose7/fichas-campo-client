@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">FichasCampoClient</string>
     <string name="title_activity_ficha_detailes">Detalles de Ficha</string>
+    <string name="title_activity_ficha_form">FichaFormActivity</string>
 </resources>

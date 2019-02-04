@@ -42,4 +42,9 @@ public class ApiEstructuraLinealAdapter implements EstructuraLinealDaoPort,
     public void onFailure() {
 
     }
+
+    @Override
+    public void postResult(String json) {
+
+    }
 }

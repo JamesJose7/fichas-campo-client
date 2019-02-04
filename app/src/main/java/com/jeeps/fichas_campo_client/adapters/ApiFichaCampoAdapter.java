@@ -39,6 +39,16 @@ public class ApiFichaCampoAdapter implements FichaCampoDaoPort,
     }
 
     @Override
+    public void saveFichaCampo(FichaCampo fichaCampo) {
+        try {
+            String json = apiParserFacade.getJsonFromFichaCampo(fichaCampo);
+            httpService.postAuthRequest(FICHAS_CAMPO_URL, json, User.getInstance());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public void onSuccess(String json) {
         // Transform fichas de campo into object list
         try {
@@ -52,5 +62,10 @@ public class ApiFichaCampoAdapter implements FichaCampoDaoPort,
     @Override
     public void onFailure() {
         listener.fichasCampoReady(new ArrayList<>());
+    }
+
+    @Override
+    public void postResult(String json) {
+
     }
 }
