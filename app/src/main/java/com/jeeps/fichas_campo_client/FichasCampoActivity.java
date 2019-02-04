@@ -1,6 +1,5 @@
 package com.jeeps.fichas_campo_client;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -8,7 +7,10 @@ import android.view.MenuItem;
 
 import com.jeeps.fichas_campo_client.adapters.ApiFichaCampoAdapter;
 import com.jeeps.fichas_campo_client.adapters.FichaCampoRecyclerViewAdapter;
-import com.jeeps.fichas_campo_client.dialogs.LoginDialog;
+import com.jeeps.fichas_campo_client.menu.AddFichaCommand;
+import com.jeeps.fichas_campo_client.menu.AppMenu;
+import com.jeeps.fichas_campo_client.menu.Invoker;
+import com.jeeps.fichas_campo_client.menu.PromptLoginCommand;
 import com.jeeps.fichas_campo_client.model.FichaCampo;
 import com.jeeps.fichas_campo_client.model.User;
 import com.jeeps.fichas_campo_client.util.SimpleDividerItemDecoration;
@@ -34,6 +36,8 @@ public class FichasCampoActivity extends AppCompatActivity
     private List<FichaCampo> mFichasCampo;
     private ApiFichaCampoAdapter mApiFichaCampoAdapter;
     private User mCurrentUser;
+    private AppMenu mAppMenu;
+    private Invoker mInvoker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +72,10 @@ public class FichasCampoActivity extends AppCompatActivity
                 e.printStackTrace();
             }
         });
+
+        // Create app menu
+        mAppMenu = new AppMenu(getApplicationContext(), getSupportFragmentManager());
+        mInvoker = new Invoker();
     }
 
     @Override
@@ -99,12 +107,12 @@ public class FichasCampoActivity extends AppCompatActivity
                 }
                 return true;
             case R.id.menu_login:
-                LoginDialog dialog = new LoginDialog(this, mCurrentUser);
-                dialog.show(getSupportFragmentManager(), "TAG");
+                PromptLoginCommand promptLoginCommand = new PromptLoginCommand(mAppMenu);
+                mInvoker.executeCommand(promptLoginCommand);
                 return true;
             case R.id.menu_add_ficha:
-                Intent intent = new Intent(this, FichaFormActivity.class);
-                startActivity(intent);
+                AddFichaCommand addFichaCommand = new AddFichaCommand(mAppMenu);
+                mInvoker.executeCommand(addFichaCommand);
             default:
                 return super.onOptionsItemSelected(item);
         }
