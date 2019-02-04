@@ -2,9 +2,9 @@ package com.jeeps.fichas_campo_client;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -23,11 +23,9 @@ import com.jeeps.fichas_campo_client.model.Ubicacion;
 import com.jeeps.fichas_campo_client.util.ApiParserFacade;
 
 import java.io.ByteArrayOutputStream;
-import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
@@ -145,7 +143,6 @@ public class FichaFormActivity extends AppCompatActivity implements
         startActivityForResult(takePicture, 0);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 0 && resultCode == RESULT_OK) {
@@ -155,7 +152,7 @@ public class FichaFormActivity extends AppCompatActivity implements
             Bitmap compressedImage = (Bitmap) extras.get("data");
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             compressedImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
-            mByteArray = new String(Base64.getEncoder().encode(stream.toByteArray()));
+            mByteArray = new String(android.util.Base64.encode(stream.toByteArray(), Base64.DEFAULT));
             //compressedImage.recycle();
         }
     }

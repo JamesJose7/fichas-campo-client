@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Base64;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,7 +28,6 @@ import com.jeeps.fichas_campo_client.model.Pliegue;
 import com.jeeps.fichas_campo_client.model.Ubicacion;
 
 import java.text.SimpleDateFormat;
-import java.util.Base64;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -186,7 +186,7 @@ public class FichaDetailsActivity extends AppCompatActivity implements
             canton.setText(ubicacion.getCanton());
             sector.setText(ubicacion.getSector());
             escala.setText(ubicacion.getEscala());
-            byte[] decodedPicture = Base64.getDecoder().decode(ubicacion.getFoto());
+            byte[] decodedPicture = android.util.Base64.decode(ubicacion.getFoto(), Base64.DEFAULT);
             Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedPicture, 0, decodedPicture.length);
             foto.setImageBitmap(decodedByte);
         });
