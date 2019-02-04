@@ -121,7 +121,7 @@ public class Muestra {
         private String observaciones;
 
         public Muestra build(){
-            return new Muestra();
+            return new Muestra(this);
         }
 
         public MuestraBuilder createNaturaleza(String naturaleza){

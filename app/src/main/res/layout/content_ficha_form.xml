@@ -257,6 +257,163 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/muestra_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="4dp"
+        app:contentPadding="12dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@id/ubicacion_layout">
+        <!--Detalles muestra-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Muestra"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/bottom_border"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Naturaleza:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/naturaleza_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Tipo:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/tipo_muestra_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Consistencia Material:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/consistencia_material_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Codigo:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/codigo_text"
+                android:layout_width="match_parent"
+                android:inputType="number"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Sitio:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/sitio_muestra_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Tipo de Analisis:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/tipo_analisis_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Metodo de Analisis:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/metodo_analisis_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Nomenclatura de Metodo de Analisis:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/nom_metodo_analisis_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Cantidad de Muestra:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/cantidad_muestra_text"
+                android:layout_width="match_parent"
+                android:inputType="number"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Observaciones:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/observaciones_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
     </RelativeLayout>
 
 </ScrollView>

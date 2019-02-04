@@ -186,9 +186,11 @@ public class FichaDetailsActivity extends AppCompatActivity implements
             canton.setText(ubicacion.getCanton());
             sector.setText(ubicacion.getSector());
             escala.setText(ubicacion.getEscala());
-            byte[] decodedPicture = android.util.Base64.decode(ubicacion.getFoto(), Base64.DEFAULT);
-            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedPicture, 0, decodedPicture.length);
-            foto.setImageBitmap(decodedByte);
+            if (ubicacion.getFoto() != null) {
+                byte[] decodedPicture = android.util.Base64.decode(ubicacion.getFoto(), Base64.DEFAULT);
+                Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedPicture, 0, decodedPicture.length);
+                foto.setImageBitmap(decodedByte);
+            }
         });
     }
 
@@ -248,6 +250,9 @@ public class FichaDetailsActivity extends AppCompatActivity implements
             observaciones.setText(muestra.getObservaciones());
         });
     }
+
+    @Override
+    public void muestraSaved(String muestraUrl) {}
 
     @Override
     public void pliegueReady(Pliegue pliegue) {

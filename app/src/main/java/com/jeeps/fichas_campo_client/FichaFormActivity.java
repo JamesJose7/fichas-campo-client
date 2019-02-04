@@ -18,7 +18,12 @@ import com.jeeps.fichas_campo_client.adapters.ApiFichaCampoAdapter;
 import com.jeeps.fichas_campo_client.adapters.ApiMuestraAdapter;
 import com.jeeps.fichas_campo_client.adapters.ApiPliegueAdapter;
 import com.jeeps.fichas_campo_client.adapters.ApiUbicacionAdapter;
+import com.jeeps.fichas_campo_client.model.Afloramiento;
+import com.jeeps.fichas_campo_client.model.EstructuraLineal;
+import com.jeeps.fichas_campo_client.model.EstructuraPlanar;
 import com.jeeps.fichas_campo_client.model.FichaCampo;
+import com.jeeps.fichas_campo_client.model.Muestra;
+import com.jeeps.fichas_campo_client.model.Pliegue;
 import com.jeeps.fichas_campo_client.model.Ubicacion;
 import com.jeeps.fichas_campo_client.util.ApiParserFacade;
 
@@ -34,7 +39,12 @@ import butterknife.OnClick;
 
 public class FichaFormActivity extends AppCompatActivity implements
         ApiFichaCampoAdapter.ApiFichaCampoListener,
-        ApiUbicacionAdapter.ApiUbicacionListener {
+        ApiUbicacionAdapter.ApiUbicacionListener,
+        ApiPliegueAdapter.ApiPliegueListener,
+        ApiMuestraAdapter.ApiMuestraListener,
+        ApiEstructuraPlanarAdapter.ApiEstructuraPlanarListener,
+        ApiEstructuraLinealAdapter.ApiEstructuraLinealListener,
+        ApiAfloramientoAdapter.ApiAfloramientoListener {
 
     private ApiFichaCampoAdapter mApiFichaCampoAdapter;
     private ApiUbicacionAdapter mApiUbicacionAdapter;
@@ -66,6 +76,18 @@ public class FichaFormActivity extends AppCompatActivity implements
     @BindView(R.id.escala_ubicacion_text) EditText escalaUbicacion;
     @BindView(R.id.foto_ubicacion) ImageView foto;
 
+    // Muestra
+    @BindView(R.id.naturaleza_text) EditText naturaleza;
+    @BindView(R.id.tipo_muestra_text) EditText tipoMuestra;
+    @BindView(R.id.consistencia_material_text) EditText consistenciaMaterial;
+    @BindView(R.id.codigo_text) EditText codigo;
+    @BindView(R.id.sitio_muestra_text) EditText sitioMuestra;
+    @BindView(R.id.tipo_analisis_text) EditText tipoAnalisis;
+    @BindView(R.id.metodo_analisis_text) EditText metodoAnalisis;
+    @BindView(R.id.nom_metodo_analisis_text) EditText nomMetodoAnalisis;
+    @BindView(R.id.cantidad_muestra_text) EditText cantidadMuestra;
+    @BindView(R.id.observaciones_text) EditText observaciones;
+
     private String fichaCampoLinks = "";
     private String mByteArray;
 
@@ -87,21 +109,32 @@ public class FichaFormActivity extends AppCompatActivity implements
 
         mApiFichaCampoAdapter = new ApiFichaCampoAdapter(this);
         mApiUbicacionAdapter = new ApiUbicacionAdapter(this);
+        mApiPliegueAdapter = new ApiPliegueAdapter(this);
+        mApiMuestraAdapter = new ApiMuestraAdapter(this);
+        mApiEstructuraPlanarAdapter = new ApiEstructuraPlanarAdapter(this);
+        mApiEstructuraLinealAdapter = new ApiEstructuraLinealAdapter(this);
+        mApiAfloramientoAdapter = new ApiAfloramientoAdapter(this);
 
         mApiParserFacade = new ApiParserFacade();
     }
 
     private void saveFicha() {
-        // Save ubicacion
-        Ubicacion ubicacion = new Ubicacion.UbicacionBuilder()
-                .createFecha(new Date())
-                .createProvincia(provincia.getText().toString())
-                .createCanton(canton.getText().toString())
-                .createSector(sector.getText().toString())
-                .createEscala(escala.getText().toString())
-                .createFoto(mByteArray)
+        // Save muestra
+        String codigoTxt = codigo.getText().toString();
+        String cantidadMuestraTxt = cantidadMuestra.getText().toString();
+        Muestra muestra = new Muestra.MuestraBuilder()
+                .createNaturaleza(naturaleza.getText().toString())
+                .createTipo(tipoMuestra.getText().toString())
+                .createConsistenciaMaterial(consistenciaMaterial.getText().toString())
+                .createCodigo(!codigoTxt.isEmpty() ? Long.valueOf(codigoTxt) : 0)
+                .createSitio(sitioMuestra.getText().toString())
+                .createTipoAnalisis(tipoAnalisis.getText().toString())
+                .createMetodoAnalisis(metodoAnalisis.getText().toString())
+                .createNomenclaturaMetodoAnalisis(nomMetodoAnalisis.getText().toString())
+                .createCantidadMuestra(!cantidadMuestraTxt.isEmpty() ? Long.valueOf(cantidadMuestraTxt) : 0)
+                .createObservaciones(observaciones.getText().toString())
                 .build();
-        mApiUbicacionAdapter.saveUbicacion(ubicacion);
+        mApiMuestraAdapter.saveMuestra(muestra);
     }
 
     @Override
@@ -133,8 +166,23 @@ public class FichaFormActivity extends AppCompatActivity implements
         mApiFichaCampoAdapter.saveFichaCampo(fichaCampo);
     }
 
-    private String getAbsUrl(String name, String ubicacionUrl) {
-        return "\"" + name + "\": \"" + "/api/" + ubicacionUrl.split("/api/")[1] + "\"";
+    @Override
+    public void muestraReady(Muestra muestra) {}
+
+    @Override
+    public void muestraSaved(String muestraUrl) {
+        fichaCampoLinks += getAbsUrl("muestra", muestraUrl) + ",\n";
+
+        // Save ubicacion
+        Ubicacion ubicacion = new Ubicacion.UbicacionBuilder()
+                .createFecha(new Date())
+                .createProvincia(provincia.getText().toString())
+                .createCanton(canton.getText().toString())
+                .createSector(sector.getText().toString())
+                .createEscala(escala.getText().toString())
+                .createFoto(mByteArray)
+                .build();
+        mApiUbicacionAdapter.saveUbicacion(ubicacion);
     }
 
     @OnClick(R.id.photo_button)
@@ -156,4 +204,20 @@ public class FichaFormActivity extends AppCompatActivity implements
             //compressedImage.recycle();
         }
     }
+
+    private String getAbsUrl(String name, String ubicacionUrl) {
+        return "\"" + name + "\": \"" + "/api/" + ubicacionUrl.split("/api/")[1] + "\"";
+    }
+
+    @Override
+    public void afloramientoReady(Afloramiento afloramiento) {}
+
+    @Override
+    public void estructuraLinealReady(EstructuraLineal estructuraLineal) {}
+
+    @Override
+    public void estructuraPlanarReady(EstructuraPlanar estructuraPlanar) {}
+
+    @Override
+    public void pliegueReady(Pliegue pliegue) {}
 }

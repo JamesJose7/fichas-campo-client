@@ -9,12 +9,15 @@ import com.jeeps.fichas_campo_client.util.ApiParserFacade;
 public class ApiMuestraAdapter implements MuestraDaoPort,
         HttpService.HttpServiceListener {
 
+    private final String MUESTRA_URL = "https://fichas-geologicas-api.herokuapp.com/api/v1/muestras";
+
     private ApiMuestraListener listener;
     private HttpService httpService;
     private ApiParserFacade apiParserFacade;
 
     public interface ApiMuestraListener {
         void muestraReady(Muestra muestra);
+        void muestraSaved(String muestraUrl);
     }
 
     public ApiMuestraAdapter(ApiMuestraListener listener) {
@@ -33,6 +36,16 @@ public class ApiMuestraAdapter implements MuestraDaoPort,
     }
 
     @Override
+    public void saveMuestra(Muestra muestra) {
+        try {
+            String json = apiParserFacade.getJsonFromMuestra(muestra);
+            httpService.postAuthRequest(MUESTRA_URL, json, User.getInstance());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public void onSuccess(String json) {
         Muestra muestra = apiParserFacade.parseMuestra(json);
         listener.muestraReady(muestra);
@@ -45,6 +58,6 @@ public class ApiMuestraAdapter implements MuestraDaoPort,
 
     @Override
     public void postResult(String json) {
-
+        listener.muestraSaved(json);
     }
 }
