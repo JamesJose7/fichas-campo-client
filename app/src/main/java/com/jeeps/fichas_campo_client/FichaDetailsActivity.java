@@ -9,8 +9,6 @@ import android.util.Base64;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.jeeps.fichas_campo_client.adapters.ApiAfloramientoAdapter;
 import com.jeeps.fichas_campo_client.adapters.ApiEstructuraLinealAdapter;
 import com.jeeps.fichas_campo_client.adapters.ApiEstructuraPlanarAdapter;
@@ -129,10 +127,10 @@ public class FichaDetailsActivity extends AppCompatActivity implements
         setSupportActionBar(toolbar);
         ButterKnife.bind(this);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+        /*FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show());
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
 
         // Get Ficha de campo and subclasses url from intent
         Intent intent = getIntent();
@@ -208,6 +206,9 @@ public class FichaDetailsActivity extends AppCompatActivity implements
     }
 
     @Override
+    public void afloramientoSaved(String afloramientoUrl) {}
+
+    @Override
     public void estructuraLinealReady(EstructuraLineal estructuraLineal) {
         runOnUiThread(() -> {
             rumboEstrLineal.setText(estructuraLineal.getRumbo() + "");
@@ -222,6 +223,11 @@ public class FichaDetailsActivity extends AppCompatActivity implements
     }
 
     @Override
+    public void estructuraLinealSaved(String estructuraUrl) {
+
+    }
+
+    @Override
     public void estructuraPlanarReady(EstructuraPlanar estructuraPlanar) {
         runOnUiThread(() -> {
             buzamientoIntesidad.setText(estructuraPlanar.getBuzamientoIntensidad());
@@ -233,6 +239,11 @@ public class FichaDetailsActivity extends AppCompatActivity implements
             rocasMetaforicas.setText(estructuraPlanar.getRocasIgneas());
             rocasIgneas.setText(estructuraPlanar.getRocasIgneas());
         });
+    }
+
+    @Override
+    public void estructuraPlanarSaved(String estructuraUrl) {
+
     }
 
     @Override
@@ -267,6 +278,11 @@ public class FichaDetailsActivity extends AppCompatActivity implements
             perfil.setText(pliegue.getPerfil());
             sistema.setText(pliegue.getSistema());
         });
+    }
+
+    @Override
+    public void pliegueSaved(String pliegueUrl) {
+
     }
 
     @Override

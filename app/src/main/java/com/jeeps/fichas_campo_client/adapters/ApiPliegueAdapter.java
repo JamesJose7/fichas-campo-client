@@ -9,12 +9,15 @@ import com.jeeps.fichas_campo_client.util.ApiParserFacade;
 public class ApiPliegueAdapter implements PliegueDaoPort,
         HttpService.HttpServiceListener {
 
+    private final String PLIEGUES_URL = "https://fichas-geologicas-api.herokuapp.com/api/v1/pliegues";
+
     private ApiPliegueListener listener;
     private HttpService httpService;
     private ApiParserFacade apiParserFacade;
 
     public interface ApiPliegueListener {
         void pliegueReady(Pliegue pliegue);
+        void pliegueSaved(String pliegueUrl);
     }
 
     public ApiPliegueAdapter(ApiPliegueListener listener) {
@@ -33,6 +36,16 @@ public class ApiPliegueAdapter implements PliegueDaoPort,
     }
 
     @Override
+    public void savePliegue(Pliegue pliegue) {
+        try {
+            String json = apiParserFacade.getJsonFromPliegue(pliegue);
+            httpService.postAuthRequest(PLIEGUES_URL, json, User.getInstance());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public void onSuccess(String json) {
         Pliegue pliegue = apiParserFacade.parsePliegue(json);
         listener.pliegueReady(pliegue);
@@ -45,6 +58,6 @@ public class ApiPliegueAdapter implements PliegueDaoPort,
 
     @Override
     public void postResult(String json) {
-
+        listener.pliegueSaved(json);
     }
 }

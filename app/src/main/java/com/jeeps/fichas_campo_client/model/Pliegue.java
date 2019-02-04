@@ -116,34 +116,47 @@ public class Pliegue {
         }
 
         public PliegueBuilder createRumbo(float rumbo){
+            this.rumbo = rumbo;
             return this;
         }
 
         public PliegueBuilder createBuzamiento(float buzamiento){
+            this.buzamiento = buzamiento;
             return this;
         }
 
         public PliegueBuilder createTipo(String tipo){
+            this.tipo = tipo;
             return this;
         }
 
         public PliegueBuilder createAltura(float altura){
+            this.altura = altura;
             return this;
         }
 
         public PliegueBuilder createSeparacion(float separacion){
+            this.separacion = separacion;
             return this;
         }
 
         public PliegueBuilder createAnguloEntreFlancos(String anguloEntreFlancos){
+            this.anguloEntreFlancos = anguloEntreFlancos;
             return this;
         }
 
         public PliegueBuilder createPerfil(String perfil){
+            this.perfil = perfil;
             return this;
         }
 
         public PliegueBuilder createSistema(String sistema){
+            this.sistema = sistema;
+            return this;
+        }
+
+        public PliegueBuilder createPosicion(String posicion){
+            this.posicion = posicion;
             return this;
         }
     }

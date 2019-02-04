@@ -88,6 +88,43 @@ public class FichaFormActivity extends AppCompatActivity implements
     @BindView(R.id.cantidad_muestra_text) EditText cantidadMuestra;
     @BindView(R.id.observaciones_text) EditText observaciones;
 
+    // Afloramiento
+    @BindView(R.id.dimension_text) EditText dimension;
+    @BindView(R.id.origen_afloramiento_text) EditText origenAfloramiento;
+    @BindView(R.id.tipo_roca_text) EditText tipoRoca;
+    @BindView(R.id.sitio_afloramiento_text) EditText sitioAfloramiento;
+
+    // Estructura Planar
+    @BindView(R.id.buz_intensidad_text) EditText buzamientoIntesidad;
+    @BindView(R.id.azimut_text) EditText azimut;
+    @BindView(R.id.clivaje_text) EditText clivaje;
+    @BindView(R.id.estratificacion_text) EditText estratificacion;
+    @BindView(R.id.fotogeologia_text) EditText fotogeologia;
+    @BindView(R.id.zona_cizalla_text) EditText zonaCizalla;
+    @BindView(R.id.rocas_metaforicas_text) EditText rocasMetaforicas;
+    @BindView(R.id.rocas_igneas_text) EditText rocasIgneas;
+
+    // Estructura Linear
+    @BindView(R.id.rumbo_estr_lineal_text) EditText rumboEstrLineal;
+    @BindView(R.id.clase_estr_lineal_text) EditText claseEstrLineal;
+    @BindView(R.id.lineacion_text) EditText lineacion;
+    @BindView(R.id.direccion_text) EditText direccion;
+    @BindView(R.id.buzamiento_estr_lineal_text) EditText buzamientoEstrLineal;
+    @BindView(R.id.asociacion_text) EditText asociacion;
+    @BindView(R.id.formacion_text) EditText formacion;
+    @BindView(R.id.diaclasa_clase_text) EditText diaclasaClase;
+
+    // Pliegue
+    @BindView(R.id.rumbo_pliegue_text) EditText rumboPliegue;
+    @BindView(R.id.buzamiento_pliegue_text) EditText buzamientoPliegue;
+    @BindView(R.id.tipo_pliegue_text) EditText tipoPliegue;
+    @BindView(R.id.altura_text) EditText altura;
+    @BindView(R.id.separacion_text) EditText separacion;
+    @BindView(R.id.posicion_text) EditText posicion;
+    @BindView(R.id.angulo_flancos_text) EditText anguloEntreFlancos;
+    @BindView(R.id.perfil_text) EditText perfil;
+    @BindView(R.id.sistema_text) EditText sistema;
+
     private String fichaCampoLinks = "";
     private String mByteArray;
 
@@ -173,6 +210,93 @@ public class FichaFormActivity extends AppCompatActivity implements
     public void muestraSaved(String muestraUrl) {
         fichaCampoLinks += getAbsUrl("muestra", muestraUrl) + ",\n";
 
+        // Save Afloramiento
+        Afloramiento afloramiento = new Afloramiento.AfloramientoBuilder()
+                .createDimension(dimension.getText().toString())
+                .createOrigen(origenAfloramiento.getText().toString())
+                .createTipoRoca(tipoRoca.getText().toString())
+                .createSitio(sitioAfloramiento.getText().toString())
+                .build();
+        mApiAfloramientoAdapter.saveAfloramiento(afloramiento);
+    }
+
+    @Override
+    public void afloramientoReady(Afloramiento afloramiento) {}
+
+    @Override
+    public void afloramientoSaved(String afloramientoUrl) {
+        fichaCampoLinks += getAbsUrl("afloramiento", afloramientoUrl) + ",\n";
+
+        // Save Estructura planar
+        String azimutTxt = azimut.getText().toString();
+        EstructuraPlanar estructuraPlanar = new EstructuraPlanar.EstructuraPlanarBuilder()
+                .createBuzamientoIntensidad(buzamientoIntesidad.getText().toString())
+                .createAzimut(!azimutTxt.isEmpty() ? Long.valueOf(azimutTxt) : 0)
+                .createClivaje(clivaje.getText().toString())
+                .createEstratificacion(estratificacion.getText().toString())
+                .createFotogeologia(fotogeologia.getText().toString())
+                .createZonaDeCizalla(zonaCizalla.getText().toString())
+                .createRocasMetaforicas(rocasMetaforicas.getText().toString())
+                .createRocasIgneas(rocasIgneas.getText().toString())
+                .buid();
+        mApiEstructuraPlanarAdapter.saveEstructuraPlanar(estructuraPlanar);
+    }
+
+    @Override
+    public void estructuraPlanarReady(EstructuraPlanar estructuraPlanar) {}
+
+    @Override
+    public void estructuraPlanarSaved(String estructuraUrl) {
+        fichaCampoLinks += getAbsUrl("estructuraPlanar", estructuraUrl) + ",\n";
+
+        // Save estructura lineal
+        String rumboTxt = rumboEstrLineal.getText().toString();
+        String direccionTxt = direccion.getText().toString();
+        EstructuraLineal estructuraLineal = new EstructuraLineal.EstructuraLinealBuilder()
+                .createRumbo(!rumboTxt.isEmpty() ? Long.valueOf(rumboTxt) : 0)
+                .createClaseEstrLineal(claseEstrLineal.getText().toString())
+                .createLineacion(lineacion.getText().toString())
+                .createDireccion(!direccionTxt.isEmpty() ? Long.valueOf(direccionTxt) : 0)
+                .createBuzamiento(buzamientoEstrLineal.getText().toString())
+                .createAsociacion(asociacion.getText().toString())
+                .createFormacion(formacion.getText().toString())
+                .createDiaclasaClase(diaclasaClase.getText().toString())
+                .buid();
+        mApiEstructuraLinealAdapter.saveEstructuraLineal(estructuraLineal);
+    }
+
+    @Override
+    public void estructuraLinealReady(EstructuraLineal estructuraLineal) {}
+
+    @Override
+    public void estructuraLinealSaved(String estructuraUrl) {
+        fichaCampoLinks += getAbsUrl("estructuraLineal", estructuraUrl) + ",\n";
+
+        // Save pliegue
+        String rumboTxt = rumboPliegue.getText().toString();
+        String buzamientoTxt = buzamientoPliegue.getText().toString();
+        String alturaTxt = altura.getText().toString();
+        String separacionTxt = separacion.getText().toString();
+        Pliegue pliegue = new Pliegue.PliegueBuilder()
+                .createRumbo(!rumboTxt.isEmpty() ? Long.valueOf(rumboTxt) : 0)
+                .createBuzamiento(!buzamientoTxt.isEmpty() ? Long.valueOf(buzamientoTxt) : 0)
+                .createTipo(tipoPliegue.getText().toString())
+                .createAltura(!alturaTxt.isEmpty() ? Long.valueOf(alturaTxt) : 0)
+                .createSeparacion(!separacionTxt.isEmpty() ? Long.valueOf(separacionTxt) : 0)
+                .createPosicion(posicion.getText().toString())
+                .createAnguloEntreFlancos(anguloEntreFlancos.getText().toString())
+                .createPerfil(perfil.getText().toString())
+                .createSistema(sistema.getText().toString())
+                .build();
+        mApiPliegueAdapter.savePliegue(pliegue);
+    }
+
+    @Override
+    public void pliegueReady(Pliegue pliegue) {}
+
+    @Override
+    public void pliegueSaved(String pliegueUrl) {
+        fichaCampoLinks += getAbsUrl("pliegue", pliegueUrl) + ",\n";
         // Save ubicacion
         Ubicacion ubicacion = new Ubicacion.UbicacionBuilder()
                 .createFecha(new Date())
@@ -208,16 +332,4 @@ public class FichaFormActivity extends AppCompatActivity implements
     private String getAbsUrl(String name, String ubicacionUrl) {
         return "\"" + name + "\": \"" + "/api/" + ubicacionUrl.split("/api/")[1] + "\"";
     }
-
-    @Override
-    public void afloramientoReady(Afloramiento afloramiento) {}
-
-    @Override
-    public void estructuraLinealReady(EstructuraLineal estructuraLineal) {}
-
-    @Override
-    public void estructuraPlanarReady(EstructuraPlanar estructuraPlanar) {}
-
-    @Override
-    public void pliegueReady(Pliegue pliegue) {}
 }

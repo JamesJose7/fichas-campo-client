@@ -113,4 +113,20 @@ public class ApiParserFacade {
     public String getJsonFromMuestra(Muestra muestra) {
         return gson.toJson(muestra);
     }
+
+    public String getJsonFromAfloramiento(Afloramiento afloramiento) {
+        return gson.toJson(afloramiento);
+    }
+
+    public String getJsonFromEtructuraPlanar(EstructuraPlanar estructuraPlanar) {
+        return gson.toJson(estructuraPlanar);
+    }
+
+    public String getJsonFromEstructuraLineal(EstructuraLineal estructuraLineal) {
+        return gson.toJson(estructuraLineal);
+    }
+
+    public String getJsonFromPliegue(Pliegue pliegue) {
+        return gson.toJson(pliegue);
+    }
 }

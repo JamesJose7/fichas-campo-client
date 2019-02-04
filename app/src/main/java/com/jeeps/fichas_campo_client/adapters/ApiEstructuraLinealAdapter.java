@@ -9,12 +9,15 @@ import com.jeeps.fichas_campo_client.util.ApiParserFacade;
 public class ApiEstructuraLinealAdapter implements EstructuraLinealDaoPort,
         HttpService.HttpServiceListener {
 
+    private final String ESTRUCTURA_LINEAL_URL = "https://fichas-geologicas-api.herokuapp.com/api/v1/estructurasLineales";
+
     private ApiEstructuraLinealListener listener;
     private HttpService httpService;
     private ApiParserFacade apiParserFacade;
 
     public interface ApiEstructuraLinealListener {
         void estructuraLinealReady(EstructuraLineal estructuraLineal);
+        void estructuraLinealSaved(String estructuraUrl);
     }
 
     public ApiEstructuraLinealAdapter(ApiEstructuraLinealListener listener) {
@@ -33,6 +36,16 @@ public class ApiEstructuraLinealAdapter implements EstructuraLinealDaoPort,
     }
 
     @Override
+    public void saveEstructuraLineal(EstructuraLineal estructuraLineal) {
+        try {
+            String json = apiParserFacade.getJsonFromEstructuraLineal(estructuraLineal);
+            httpService.postAuthRequest(ESTRUCTURA_LINEAL_URL, json, User.getInstance());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public void onSuccess(String json) {
         EstructuraLineal estructuraLineal = apiParserFacade.parseEstructuraLineal(json);
         listener.estructuraLinealReady(estructuraLineal);
@@ -45,6 +58,6 @@ public class ApiEstructuraLinealAdapter implements EstructuraLinealDaoPort,
 
     @Override
     public void postResult(String json) {
-
+        listener.estructuraLinealSaved(json);
     }
 }

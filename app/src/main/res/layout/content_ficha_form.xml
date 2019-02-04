@@ -239,16 +239,25 @@
                 android:layout_height="wrap_content"
                 />
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="13sp"
-                android:text="Foto:"
-                android:layout_marginTop="6dp"/>
-            <Button
-                android:id="@+id/photo_button"
-                android:layout_width="36dp"
-                android:layout_height="36dp" />
+                android:orientation="horizontal"
+                android:weightSum="100">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:text="Foto:"
+                    android:layout_marginTop="6dp"
+                    android:layout_weight="20"/>
+                <ImageView
+                    android:id="@+id/photo_button"
+                    android:src="@drawable/ic_add_circle_black_24dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="80"/>
+            </LinearLayout>
             <ImageView
                 android:id="@+id/foto_ubicacion"
                 android:layout_width="match_parent"
@@ -413,6 +422,491 @@
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/afloramiento_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="4dp"
+        app:contentPadding="12dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@id/muestra_layout">
+        <!--Detalles afloramiento-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Afloramiento"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/bottom_border"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Dimension:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/dimension_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Origen:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/origen_afloramiento_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Tipo de Roca:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/tipo_roca_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Sitio:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/sitio_afloramiento_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/estructura_planar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="4dp"
+        app:contentPadding="12dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@id/afloramiento_layout">
+        <!--Detalles estructura planar-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Estructura Planar"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/bottom_border"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Buzamiento Intensidad:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/buz_intensidad_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Azimut:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/azimut_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Clivaje:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/clivaje_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Estratificacion:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/estratificacion_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Fotogeologia:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/fotogeologia_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Zona de Cizalla:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/zona_cizalla_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Rocas Metaforicas:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/rocas_metaforicas_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Rocas Igneas:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/rocas_igneas_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/estructura_lineal_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="4dp"
+        app:contentPadding="12dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@id/estructura_planar_layout">
+        <!--Detalles estructura lineal-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Estructura Planar"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/bottom_border"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Rumbo:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/rumbo_estr_lineal_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Clase:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/clase_estr_lineal_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Lineacion:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/lineacion_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Direccion:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/direccion_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Buzamiento:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/buzamiento_estr_lineal_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Asociacion:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/asociacion_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Formacion:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/formacion_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Clase Diaclasa:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/diaclasa_clase_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/pliegue_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="4dp"
+        app:contentPadding="12dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@id/estructura_lineal_layout">
+        <!--Detalles pliegue-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pliegue"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/bottom_border"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Rumbo:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/rumbo_pliegue_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Buzamiento:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/buzamiento_pliegue_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Tipo:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/tipo_pliegue_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Altura:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/altura_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Separacion:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/separacion_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Posicion:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/posicion_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Angulo entre Flancos:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/angulo_flancos_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Perfil:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/perfil_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Sistema:"
+                android:layout_marginTop="6dp"/>
+            <EditText
+                android:id="@+id/sistema_text"
+                android:layout_width="match_parent"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
 
     </RelativeLayout>
 
