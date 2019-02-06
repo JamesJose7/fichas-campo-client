@@ -132,4 +132,38 @@ public class HttpService {
         });
     }
 
+    public void sendDeleteRequest(String url, User user) throws Exception {
+        Request request = new Request.Builder()
+                .url(url)
+                .delete()
+                .build();
+
+        client = new OkHttpClient.Builder().authenticator((route, response) -> {
+            if (response.request().header("Authorization") != null)
+                return null; // Give up, we've already attempted to authenticate.
+            String credential = Credentials.basic(user.getUsername(), user.getPassword());
+            return response.request().newBuilder()
+                    .header("Authorization", credential)
+                    .build();
+        }).build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override public void onResponse(Call call, Response response) throws IOException {
+                try (ResponseBody responseBody = response.body()) {
+                    if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+
+                    /*Headers responseHeaders = response.headers();
+                    for (int i = 0, size = responseHeaders.size(); i < size; i++) {
+                        System.out.println(responseHeaders.name(i) + ": " + responseHeaders.value(i));
+                    }*/
+                    listener.onSuccess(responseBody.toString());
+                }
+            }
+        });
+    }
+
 }
