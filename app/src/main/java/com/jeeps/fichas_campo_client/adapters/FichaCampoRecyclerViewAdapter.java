@@ -1,5 +1,6 @@
 package com.jeeps.fichas_campo_client.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,12 +10,16 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.jeeps.fichas_campo_client.FichaDetailsActivity;
 import com.jeeps.fichas_campo_client.R;
 import com.jeeps.fichas_campo_client.model.FichaCampo;
 import com.jeeps.fichas_campo_client.model.FichaSubClassesHelper;
+import com.jeeps.fichas_campo_client.model.User;
+import com.jeeps.fichas_campo_client.service.HttpService;
 import com.jeeps.fichas_campo_client.util.ApiParserFacade;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -95,6 +100,40 @@ public class FichaCampoRecyclerViewAdapter
                 intent.putExtras(bundle);
                 mContext.startActivity(intent);
             });
+
+            mLinearLayout.setOnLongClickListener(v -> {
+                String selfUrl = mFichaCampos.get(position).getSelfLinks().get("self").getAsJsonObject().get("href").getAsString();
+                HttpService httpService = new HttpService(new HttpService.HttpServiceListener() {
+                    @Override
+                    public void onSuccess(String json) {
+                        ((Activity) mContext).runOnUiThread(() -> {
+                            removeAt(position);
+                            Snackbar.make(v, "Ficha eliminada", Snackbar.LENGTH_LONG)
+                                    .setAction("Action", null).show();
+                        });
+                    }
+
+                    @Override
+                    public void onFailure() {}
+
+                    @Override
+                    public void postResult(String json) {}
+                });
+                try {
+                    httpService.sendDeleteRequest(selfUrl, User.getInstance());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return true;
+            });
         }
+    }
+
+    public void removeAt(int position) {
+        List<FichaCampo> listCopy = new ArrayList<>(mFichaCampos);
+        listCopy.remove(position);
+        mFichaCampos = new ArrayList<>(listCopy);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, mFichaCampos.size());
     }
 }
